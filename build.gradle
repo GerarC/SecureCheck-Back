@@ -56,3 +56,26 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+def jacocoExclude = [
+		'**/configuration/**/*.class',
+		'**/mapper/*.class',
+		'**/model/*.class',
+		'**/entity/*.class',
+		'**/utils/Constant.class',
+		'**/dto/*.class',
+]
+
+test {
+	finalizedBy jacocoTestReport
+}
+
+
+jacocoTestReport {
+	dependsOn test
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: jacocoExclude)
+		}))
+	}
+}

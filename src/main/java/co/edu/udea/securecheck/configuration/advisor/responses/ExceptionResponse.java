@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.configuration.advice.responses;
+package co.edu.udea.securecheck.configuration.advisor.responses;
 
 import lombok.*;
 import org.springframework.http.HttpStatusCode;

@@ -25,6 +25,8 @@ public class Initialization {
     @Bean
     public CommandLineRunner init() {
         return args -> {
+
+            if (userRepository.findByEmail("admin@admin.com").isPresent()) return;
             List<RoleEntity> roles = List.of(
                     new RoleEntity(null, RoleName.ADMIN),
                     new RoleEntity(null, RoleName.AUDITOR),

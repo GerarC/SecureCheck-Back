@@ -17,4 +17,14 @@ public class UserJpaAdapter implements UserPersitencePort {
         UserEntity entity = userEntityMapper.toEntity(user);
         return userEntityMapper.toDomain(userRepository.save(entity));
     }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existsByIdentityDocument(String identityDocument) {
+        return userRepository.existsByIdentityDocument(identityDocument);
+    }
 }

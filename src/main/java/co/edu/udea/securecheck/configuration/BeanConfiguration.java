@@ -28,6 +28,7 @@ public class BeanConfiguration {
         return new UserUseCase(userPersitencePort());
     }
 
+
     // Security
 
     @Bean

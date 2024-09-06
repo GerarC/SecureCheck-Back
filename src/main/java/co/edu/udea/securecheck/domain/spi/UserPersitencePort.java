@@ -4,4 +4,6 @@ import co.edu.udea.securecheck.domain.model.User;
 
 public interface UserPersitencePort {
     User save(User user);
+    boolean existsByEmail(String email);
+    boolean existsByIdentityDocument(String identityDocument);
 }
