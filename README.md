@@ -1,2 +1,2 @@
 # SecureCheck
-Backend of securecheck. A web that helps you to audit companies to fulfill ISO 27001
+Backend of SecureCheck. A web that helps you to audit companies to fulfill ISO 27001

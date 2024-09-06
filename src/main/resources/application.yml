@@ -1,0 +1,9 @@
+spring:
+    profiles:
+      active: local
+    application:
+        name: SecureCheck
+
+app:
+    version: 0.0.1
+    description: SecureCheck backend made by Cristian and Gerard
