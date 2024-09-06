@@ -1,8 +1,8 @@
 package co.edu.udea.securecheck.adapter.driving.rest.v1.service;
 
 import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.request.UserRequest;
-import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.UserResponse;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.RegisterResponse;
 
 public interface UserService {
-    UserResponse registerAuditor(UserRequest userRequest);
+    RegisterResponse registerAuditor(UserRequest userRequest);
 }

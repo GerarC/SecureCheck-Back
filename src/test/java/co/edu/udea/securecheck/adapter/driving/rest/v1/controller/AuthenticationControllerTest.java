@@ -1,12 +1,13 @@
 package co.edu.udea.securecheck.adapter.driving.rest.v1.controller;
 
 import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.request.UserRequest;
-import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.UserResponse;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.RegisterResponse;
 import co.edu.udea.securecheck.adapter.driving.rest.v1.service.UserService;
 import co.edu.udea.securecheck.configuration.utils.JsonParser;
 import co.edu.udea.securecheck.domain.exceptions.EmailAlreadyExistsException;
 import co.edu.udea.securecheck.domain.exceptions.IdentityDocumentAlreadyExistsException;
 import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
+import co.edu.udea.securecheck.domain.utils.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -52,10 +53,9 @@ class AuthenticationControllerTest {
     @Test
     void registerAuditor() throws Exception {
         // Mock data
-        UserResponse userResponse = UserResponse.builder()
-                .name("admin")
-                .lastname("admin")
-                .build();
+        RegisterResponse registerResponse = RegisterResponse.builder()
+                .message(String.format(Constants.AUDITOR_REGISTERED_MESSAGE,
+                        "admin", "admin", "admin@admin.com")).build();
         UserRequest userRequest = UserRequest.builder()
                 .name("admin")
                 .lastname("admin")
@@ -66,15 +66,15 @@ class AuthenticationControllerTest {
                 .password("password")
                 .build();
         // Define what should happen
-        when(userService.registerAuditor(userRequest)).thenReturn(userResponse);
+        when(userService.registerAuditor(userRequest)).thenReturn(registerResponse);
 
         // Perform Test
         this.mockMvc.perform(post("/v1/auth/register/auditor")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonParser.toJson(userRequest)))
-        // Verify
+                // Verify
                 .andExpect(status().isCreated())
-                .andExpect(content().json(JsonParser.toJson(userResponse)));
+                .andExpect(content().json(JsonParser.toJson(registerResponse)));
 
         verify(userService).registerAuditor(any());
     }

@@ -6,6 +6,8 @@ public class Constants {
         throw new IllegalStateException("Utility constants class");
     }
 
+    // Regitered Message
+    public static final String AUDITOR_REGISTERED_MESSAGE = "'%s %s' with '%s' email has been registered";
 
     // Empty messages
     public static final String EMPTY_NAME_FIELD_MESSAGE = "'name' field cannot be empty";
@@ -34,7 +36,6 @@ public class Constants {
     public static final String NOT_NUMERIC_IDENTITY_DOCUMENT_MESSAGE = "Identity document must be numerical only";
 
     public static final String FUTURE_BIRTH_DATE_MESSAGE = "'birthdate' field cannot be a future date";
-
 
     // Exception message
     public static final String EMAIL_ALREADY_EXISTS_MESSAGE = "A user with email '%s' already exists";
