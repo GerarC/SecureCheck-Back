@@ -4,11 +4,11 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.UserEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.UserEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.UserPersitencePort;
+import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class UserJpaAdapter implements UserPersitencePort {
+public class UserJpaAdapter implements UserPersistencePort {
     private final UserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
 

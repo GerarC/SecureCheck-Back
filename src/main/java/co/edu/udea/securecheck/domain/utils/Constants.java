@@ -6,7 +6,7 @@ public class Constants {
         throw new IllegalStateException("Utility constants class");
     }
 
-    // Regitered Message
+    // Registered Message
     public static final String AUDITOR_REGISTERED_MESSAGE = "'%s %s' with '%s' email has been registered";
 
     // Empty messages

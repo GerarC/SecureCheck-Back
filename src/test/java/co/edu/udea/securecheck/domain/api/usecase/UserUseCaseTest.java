@@ -5,7 +5,7 @@ import co.edu.udea.securecheck.domain.exceptions.IdentityDocumentAlreadyExistsEx
 import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import co.edu.udea.securecheck.domain.model.Role;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.UserPersitencePort;
+import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.RoleName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 class UserUseCaseTest {
 
     @Mock
-    private UserPersitencePort userPersitencePort;
+    private UserPersistencePort userPersistencePort;
 
     @InjectMocks
     private UserUseCase userUseCase;
@@ -47,14 +47,14 @@ class UserUseCaseTest {
                 new Role(null, RoleName.ADMIN));
 
         // Declare what happens
-        when(userPersitencePort.existsByEmail(any())).thenReturn(false);
-        when(userPersitencePort.existsByIdentityDocument(any())).thenReturn(false);
-        when(userPersitencePort.save(any())).thenReturn(user);
+        when(userPersistencePort.existsByEmail(any())).thenReturn(false);
+        when(userPersistencePort.existsByIdentityDocument(any())).thenReturn(false);
+        when(userPersistencePort.save(any())).thenReturn(user);
         // Test
         User savedUser = userUseCase.save(user);
 
         // Verify and assert
-        verify(userPersitencePort).save(any());
+        verify(userPersistencePort).save(any());
         assertEquals(user.getEmail(), savedUser.getEmail());
     }
 
@@ -73,15 +73,15 @@ class UserUseCaseTest {
                 new Role(null, RoleName.ADMIN));
 
         // Declare what happens
-        when(userPersitencePort.existsByEmail(any())).thenReturn(true);
-        when(userPersitencePort.existsByIdentityDocument(any())).thenReturn(false);
-        when(userPersitencePort.save(any())).thenReturn(user);
+        when(userPersistencePort.existsByEmail(any())).thenReturn(true);
+        when(userPersistencePort.existsByIdentityDocument(any())).thenReturn(false);
+        when(userPersistencePort.save(any())).thenReturn(user);
 
         // Test exception
         assertThrows(EmailAlreadyExistsException.class, () -> userUseCase.save(user));
 
         // Verify
-        verify(userPersitencePort, times(0)).save(any());
+        verify(userPersistencePort, times(0)).save(any());
     }
 
     @Test
@@ -96,11 +96,11 @@ class UserUseCaseTest {
                 "admin@admin.com",
                 "password",
                 new Role(null, RoleName.ADMIN));
-        when(userPersitencePort.existsByEmail(any())).thenReturn(false);
-        when(userPersitencePort.existsByIdentityDocument(any())).thenReturn(true);
-        when(userPersitencePort.save(any())).thenReturn(user);
+        when(userPersistencePort.existsByEmail(any())).thenReturn(false);
+        when(userPersistencePort.existsByIdentityDocument(any())).thenReturn(true);
+        when(userPersistencePort.save(any())).thenReturn(user);
         assertThrows(IdentityDocumentAlreadyExistsException.class, () -> userUseCase.save(user));
-        verify(userPersitencePort, times(0)).save(any());
+        verify(userPersistencePort, times(0)).save(any());
     }
 
     @Test
@@ -115,10 +115,10 @@ class UserUseCaseTest {
                 "admin@admin.com",
                 "password",
                 new Role(null, RoleName.ADMIN));
-        when(userPersitencePort.existsByEmail(any())).thenReturn(false);
-        when(userPersitencePort.existsByIdentityDocument(any())).thenReturn(true);
-        when(userPersitencePort.save(any())).thenReturn(user);
+        when(userPersistencePort.existsByEmail(any())).thenReturn(false);
+        when(userPersistencePort.existsByIdentityDocument(any())).thenReturn(true);
+        when(userPersistencePort.save(any())).thenReturn(user);
         assertThrows(UnderageUserException.class, () -> userUseCase.save(user));
-        verify(userPersitencePort, times(0)).save(any());
+        verify(userPersistencePort, times(0)).save(any());
     }
 }
