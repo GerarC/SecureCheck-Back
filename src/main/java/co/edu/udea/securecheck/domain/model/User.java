@@ -1,7 +1,10 @@
 package co.edu.udea.securecheck.domain.model;
 
+import co.edu.udea.securecheck.domain.utils.Generated;
+
 import java.time.LocalDateTime;
 
+@Generated
 public class User {
     private String id;
     private String name;
