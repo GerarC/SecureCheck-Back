@@ -3,6 +3,8 @@ package co.edu.udea.securecheck.adapter.driving.rest.v1.controller;
 import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.request.UserRequest;
 import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.RegisterResponse;
 import co.edu.udea.securecheck.adapter.driving.rest.v1.service.UserService;
+import co.edu.udea.securecheck.configuration.advisor.responses.ExceptionResponse;
+import co.edu.udea.securecheck.configuration.advisor.responses.ValidationExceptionResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,10 +27,15 @@ public class AuthenticationController {
 
     @Operation(summary = "Register a new auditor")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Auditor has been registered successfully",
-                   content = @Content(schema = @Schema(implementation = RegisterResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Request info is not valid", content = @Content),
-            @ApiResponse(responseCode = "409", description = "There's a conflict with given information, i.e., email or document is already registered, or User is under aged", content = @Content)
+            @ApiResponse(responseCode = "201",
+                    description = "Auditor has been registered successfully",
+                    content = @Content(schema = @Schema(implementation = RegisterResponse.class))),
+            @ApiResponse(responseCode = "400",
+                    description = "Request info is not valid",
+                    content = @Content(schema = @Schema(implementation = ValidationExceptionResponse.class))),
+            @ApiResponse(responseCode = "409",
+                    description = "There's a conflict with given information, i.e., email or document is already registered, or User is under aged",
+                    content = @Content(schema = @Schema(implementation = ExceptionResponse.class)))
     })
     @PostMapping("/register/auditor")
     public ResponseEntity<RegisterResponse> registerAuditor(@RequestBody @Valid UserRequest userRequest) {

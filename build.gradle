@@ -59,7 +59,7 @@ tasks.named('test') {
 
 def jacocoExclude = [
 		'**/configuration/**/*.class',
-		'**/mapper/*.class',
+		'**/generated/**',
 		'**/model/*.class',
 		'**/entity/*.class',
 		'**/utils/Constant.class',
