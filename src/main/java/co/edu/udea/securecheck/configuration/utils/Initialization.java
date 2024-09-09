@@ -7,6 +7,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.UserEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.DomainRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.RoleRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
+import co.edu.udea.securecheck.domain.utils.Generated;
 import co.edu.udea.securecheck.domain.utils.RoleName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Generated
 @Configuration
 @RequiredArgsConstructor
 public class Initialization {

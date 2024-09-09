@@ -1,5 +1,6 @@
 package co.edu.udea.securecheck.configuration.security;
 
+import co.edu.udea.securecheck.domain.utils.Generated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+@Generated
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor

@@ -1,5 +1,6 @@
 package co.edu.udea.securecheck.domain.utils;
 
+@Generated
 public class Constants {
 
     private Constants(){

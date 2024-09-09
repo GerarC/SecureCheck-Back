@@ -1,9 +1,11 @@
 package co.edu.udea.securecheck.configuration.utils;
 
 import co.edu.udea.securecheck.configuration.utils.exceptions.JsonParseException;
+import co.edu.udea.securecheck.domain.utils.Generated;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+@Generated
 public class JsonParser {
 
     private JsonParser(){

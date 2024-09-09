@@ -12,12 +12,14 @@ import co.edu.udea.securecheck.domain.api.usecase.DomainUseCase;
 import co.edu.udea.securecheck.domain.api.usecase.UserUseCase;
 import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.utils.Generated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Generated
 @Configuration
 @RequiredArgsConstructor
 public class BeanConfiguration {
