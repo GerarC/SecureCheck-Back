@@ -35,10 +35,10 @@ class DomainJpaAdapterTest {
     @Test
     void getDomains() {
         List<Domain> domains = List.of(
-                new Domain(1L, "name", "description")
+                new Domain(1L, 5, "name", "description")
         );
         List<DomainEntity> domainEntities = List.of(
-                new DomainEntity(1L, "name", "description")
+                new DomainEntity(1L, 5, "name", "description")
         );
 
         when(domainEntityMapper.toDomains(domainEntities)).thenReturn(domains);

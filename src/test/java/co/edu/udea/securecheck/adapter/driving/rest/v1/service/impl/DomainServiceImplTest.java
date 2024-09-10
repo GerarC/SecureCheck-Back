@@ -35,10 +35,10 @@ class DomainServiceImplTest {
     @Test
     void getDomains() {
         List<Domain> domains = List.of(
-                new Domain(1L, "name", "description")
+                new Domain(1L, 5, "name", "description")
         );
         List<DomainResponse> domainResponses = List.of(
-                new DomainResponse(1L, "name", "description")
+                new DomainResponse(1L, 5, "name", "description")
         );
         when(domainServicePort.getDomains()).thenReturn(domains);
         when(domainResponseMapper.toResponses(domains)).thenReturn(domainResponses);

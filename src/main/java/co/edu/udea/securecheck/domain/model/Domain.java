@@ -5,11 +5,13 @@ import co.edu.udea.securecheck.domain.utils.Generated;
 @Generated
 public class Domain {
     private Long id;
+    private Integer index;
     private String name;
     private String description;
 
-    public Domain(Long id, String name, String description) {
+    public Domain(Long id, Integer index, String name, String description) {
         this.id = id;
+        this.index = index;
         this.name = name;
         this.description = description;
     }
@@ -23,6 +25,14 @@ public class Domain {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 
     public String getName() {

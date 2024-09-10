@@ -47,7 +47,7 @@ class DomainControllerTest {
     @Test
     void getDomains() throws Exception {
         List<DomainResponse> domains = List.of(
-                new DomainResponse(1L, "name", "description")
+                new DomainResponse(1L, 5, "name", "description")
         );
         when(domainService.getDomains()).thenReturn(domains);
         this.mockMvc.perform(get("/v1/domains"))

@@ -16,6 +16,9 @@ public class DomainEntity {
     @Column(name = "domain_id", nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "index", nullable = false)
+    private Integer index;
+
     @Column(name = "name", nullable = false)
     private String name;
 
