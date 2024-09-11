@@ -2,6 +2,7 @@ package co.edu.udea.securecheck.adapter.driving.rest.v1.controller;
 
 import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.DomainResponse;
 import co.edu.udea.securecheck.adapter.driving.rest.v1.service.DomainService;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.utils.RestConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -23,10 +24,10 @@ public class DomainController {
 
     private final DomainService domainService;
 
-    @Operation(summary = "Return a domain list")
+    @Operation(summary = RestConstants.SWAGGER_GET_ALL_DOMAIN_SUMMARY)
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201",
-                    description = "Auditor has been registered successfully",
+            @ApiResponse(responseCode = RestConstants.CODE_OK,
+                    description = RestConstants.SWAGGER_GET_ALL_DOMAIN_SUCCESSFUL,
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = DomainResponse.class)))),
     })
     @GetMapping

@@ -30,7 +30,7 @@ class DomainUseCaseTest {
     @Test
     void getDomains() {
         List<Domain> domains = List.of(
-                new Domain(1L, 5, "name", "description")
+                new Domain(1L, 5, "name", "description", null)
         );
         when(domainPersistencePort.getDomains()).thenReturn(domains);
         List<Domain> result = domainUseCase.getDomains();

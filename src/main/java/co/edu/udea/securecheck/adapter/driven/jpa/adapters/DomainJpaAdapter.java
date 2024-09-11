@@ -5,9 +5,11 @@ import co.edu.udea.securecheck.adapter.driven.jpa.repository.DomainRepository;
 import co.edu.udea.securecheck.domain.model.Domain;
 import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @RequiredArgsConstructor
 public class DomainJpaAdapter implements DomainPersistencePort {
 

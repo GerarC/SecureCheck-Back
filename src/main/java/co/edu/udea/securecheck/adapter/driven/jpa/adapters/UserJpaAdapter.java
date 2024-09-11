@@ -6,7 +6,9 @@ import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class UserJpaAdapter implements UserPersistencePort {
     private final UserRepository userRepository;

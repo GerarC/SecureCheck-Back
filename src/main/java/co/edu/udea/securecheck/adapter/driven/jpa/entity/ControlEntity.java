@@ -4,22 +4,19 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.util.Set;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@Table(name = "domain")
-public class DomainEntity {
+@Table(name = "control")
+public class ControlEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "domain_id", nullable = false, updatable = false)
+    @Column(name = "control_id", nullable = false, updatable = false)
     private Long id;
-
-    @Column(name = "index", nullable = false, unique = true)
+    @Column(name = "index", nullable = false)
     private Integer index;
 
     @Column(name = "name", nullable = false)
@@ -29,6 +26,7 @@ public class DomainEntity {
     @Size(min = 7, max = 511)
     private String description;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "domain")
-    private Set<ControlEntity> controls;
+    @ManyToOne
+    @JoinColumn(name = "domain")
+    private DomainEntity domain;
 }

@@ -35,7 +35,7 @@ class DomainServiceImplTest {
     @Test
     void getDomains() {
         List<Domain> domains = List.of(
-                new Domain(1L, 5, "name", "description")
+                new Domain(1L, 5, "name", "description", null)
         );
         List<DomainResponse> domainResponses = List.of(
                 new DomainResponse(1L, 5, "name", "description")
