@@ -4,6 +4,7 @@ import co.edu.udea.securecheck.configuration.advisor.responses.ExceptionResponse
 import co.edu.udea.securecheck.configuration.advisor.responses.ValidationExceptionResponse;
 import co.edu.udea.securecheck.domain.exceptions.EmailAlreadyExistsException;
 import co.edu.udea.securecheck.domain.exceptions.IdentityDocumentAlreadyExistsException;
+import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsException;
 import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +35,6 @@ public class ExceptionAdvisor {
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }
 
-    @ExceptionHandler(HttpMessageConversionException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ExceptionResponse> handleBadRequestException(HttpMessageConversionException e) {
-        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.BAD_REQUEST, e.getMessage());
-        return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
-    }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ValidationExceptionResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
@@ -56,28 +50,29 @@ public class ExceptionAdvisor {
                 }).toList())
                 .message(e.getBody().getDetail()).build();
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
-    }
+   }
 
-    @ExceptionHandler(UnderageUserException.class)
+@ExceptionHandler(value = {
+            IdentityDocumentAlreadyExistsException.class,
+            EmailAlreadyExistsException.class,
+            UnderageUserException.class,
+    })
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEntity<ExceptionResponse> handleBadRequestException(UnderageUserException e) {
+    public ResponseEntity<ExceptionResponse> handleConflictException(RuntimeException e) {
         ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.CONFLICT, e.getMessage());
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }
 
-    @ExceptionHandler(EmailAlreadyExistsException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEntity<ExceptionResponse> handleBadRequestException(EmailAlreadyExistsException e) {
-        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.CONFLICT, e.getMessage());
+    @ExceptionHandler(value = {
+            HttpMessageConversionException.class,
+            TypeAttributeDoesntExistsException.class
+    })
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ExceptionResponse> handleBadRequestException(RuntimeException e) {
+        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }
 
-    @ExceptionHandler(IdentityDocumentAlreadyExistsException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEntity<ExceptionResponse> handleBadRequestException(IdentityDocumentAlreadyExistsException e) {
-        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.CONFLICT, e.getMessage());
-        return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
-    }
 }
 
 

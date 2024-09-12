@@ -1,5 +1,8 @@
 package co.edu.udea.securecheck.domain.model;
 
+import co.edu.udea.securecheck.domain.utils.Generated;
+
+@Generated
 public class Control {
     private Long id;
     private Integer index;

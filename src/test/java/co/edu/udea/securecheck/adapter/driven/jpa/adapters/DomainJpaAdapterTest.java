@@ -49,4 +49,12 @@ class DomainJpaAdapterTest {
         assertEquals(domains.get(0).getId(), result.get(0).getId());
 
     }
+
+    @Test
+    void getDomainControls() {
+    }
+
+    @Test
+    void existsById() {
+    }
 }

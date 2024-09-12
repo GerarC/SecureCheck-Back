@@ -3,12 +3,14 @@ package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.ControlEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.PaginationJPAMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.ControlRepository;
+import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsException;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.spi.ControlPersistencePort;
 import co.edu.udea.securecheck.domain.utils.PageQuery;
 import co.edu.udea.securecheck.domain.utils.Pagination;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,6 +25,10 @@ public class ControlJpaAdapter implements ControlPersistencePort {
         Pageable pageable = paginationJPAMapper
                 .toJPA(pageQuery)
                 .createPageable();
-        return controlEntityMapper.toPagination(controlRepository.findAll(pageable));
+        try {
+            return controlEntityMapper.toPagination(controlRepository.findAll(pageable));
+        } catch (PropertyReferenceException e){
+            throw new TypeAttributeDoesntExistsException(pageQuery.getSortBy(), Control.class.getSimpleName());
+        }
     }
 }

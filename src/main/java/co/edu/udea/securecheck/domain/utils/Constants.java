@@ -43,4 +43,6 @@ public class Constants {
     public static final String IDENTITY_DOCUMENT_ALREADY_REGISTERED_MESSAGE = "A user with document with number '%s' is already registered";
     public static final String UNDERAGE_USER_MESSAGE = "User born '%tF' is underage";
 
+    public static final String ENTITY_NOT_FOUND_MESSAGE = "Entity of type '%s' with id '%s' not found";
+    public static final String TYPE_ATTRIBUTE_DOESNT_EXISTS_MESSAGE = "Attribute '%s' doesn't exists in '%s' type";
 }

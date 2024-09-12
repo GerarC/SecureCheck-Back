@@ -2,6 +2,7 @@ package co.edu.udea.securecheck.domain.utils;
 
 import java.util.List;
 
+@Generated
 public class Pagination<T>{
     private Integer page;
     private Integer size;

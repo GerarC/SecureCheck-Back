@@ -37,4 +37,8 @@ class DomainUseCaseTest {
         verify(domainPersistencePort).getDomains();
         assertEquals(domains, result);
     }
+
+    @Test
+    void getDomainControls() {
+    }
 }

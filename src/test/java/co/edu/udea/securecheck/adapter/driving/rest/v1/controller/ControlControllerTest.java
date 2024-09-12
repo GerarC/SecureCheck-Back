@@ -1,8 +1,8 @@
 package co.edu.udea.securecheck.adapter.driving.rest.v1.controller;
 
-import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.DomainResponse;
-import co.edu.udea.securecheck.adapter.driving.rest.v1.service.DomainService;
-import co.edu.udea.securecheck.configuration.utils.JsonParser;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.ControlResponse;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.dto.response.PageResponse;
+import co.edu.udea.securecheck.adapter.driving.rest.v1.service.ControlService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -16,25 +16,24 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
-import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
-@WebMvcTest(controllers = {DomainController.class})
-class DomainControllerTest {
+@WebMvcTest(controllers = {ControlController.class})
+class ControlControllerTest {
 
     private MockMvc mockMvc;
 
     private final WebApplicationContext webApplicationContext;
 
     @MockBean
-    private DomainService domainService;
+    private ControlService controlService;
 
     @Autowired
-    public DomainControllerTest(WebApplicationContext webApplicationContext) {
+    public ControlControllerTest(WebApplicationContext webApplicationContext) {
         this.webApplicationContext = webApplicationContext;
     }
 
@@ -45,18 +44,12 @@ class DomainControllerTest {
     }
 
     @Test
-    void getDomains() throws Exception {
-        List<DomainResponse> domains = List.of(
-                new DomainResponse(1L, 5, "name", "description")
-        );
-        when(domainService.getDomains()).thenReturn(domains);
-        this.mockMvc.perform(get("/v1/domains"))
-                .andExpect(content().json(JsonParser.toJson(domains)))
+    void listControls() throws Exception {
+        PageResponse<ControlResponse> controlResponses = new PageResponse<>(1, 1, 1, 1, List.of(
+                new ControlResponse(1L, 5, 5, "name", "description")
+        ));
+        when(controlService.getControls(anyMap())).thenReturn(controlResponses);
+        this.mockMvc.perform(get("/v1/controls"))
                 .andExpect(status().isOk());
-        verify(domainService).getDomains();
-    }
-
-    @Test
-    void getDomainControls() {
     }
 }

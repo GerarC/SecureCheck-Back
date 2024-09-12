@@ -46,4 +46,8 @@ class DomainServiceImplTest {
         verify(domainServicePort).getDomains();
         assertEquals(domainResponses, responses);
     }
+
+    @Test
+    void getDomainControls() {
+    }
 }

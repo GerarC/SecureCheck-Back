@@ -2,6 +2,7 @@ package co.edu.udea.securecheck.domain.utils;
 
 import java.util.Map;
 
+@Generated
 public class PageQuery {
     Integer page;
     Integer size;

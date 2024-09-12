@@ -20,6 +20,9 @@ public class RestConstants {
 
     public static final String SWAGGER_GET_ALL_DOMAIN_SUMMARY = "Return a domain list";
     public static final String SWAGGER_GET_ALL_DOMAIN_SUCCESSFUL = "A list with all domains";
+    public static final String SWAGGER_GET_DOMAIN_CONTROLS_SUMMARY = "Search controls of a domain";
+    public static final String SWAGGER_GET_DOMAIN_CONTROLS_SUCCESSFUL = "A list with the found controls";
+    public static final String SWAGGER_GET_DOMAIN_NOT_FOUND = "Domain not found";
 
     public static final String SWAGGER_GET_ALL_CONTROL_SUMMARY = "Return a control page, depending on the query";
     public static final String SWAGGER_GET_ALL_CONTROL_SUCCESSFUL = "A bunch of controls controls";
