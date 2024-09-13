@@ -27,6 +27,6 @@ public class ControlEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "domain")
+    @JoinColumn(name = "domain_id")
     private DomainEntity domain;
 }

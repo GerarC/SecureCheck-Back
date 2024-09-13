@@ -54,7 +54,8 @@ public class Initialization {
                             "+57 3013424656",
                             "admin@admin.com",
                             passwordEncoder.encode("#P4ssw0rd*"),
-                            roles.get(0))
+                            roles.get(0),
+                            null)
             );
             userRepository.saveAll(users);
 

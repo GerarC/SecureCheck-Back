@@ -3,6 +3,7 @@ package co.edu.udea.securecheck.domain.model;
 import co.edu.udea.securecheck.domain.utils.Generated;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Generated
 public class User {
@@ -15,8 +16,9 @@ public class User {
     private String email;
     private String password;
     private Role role;
+    private List<Company> companies;
 
-    public User(String id, String name, String lastname, String identityDocument, LocalDateTime birthdate, String phone, String email, String password, Role role) {
+    public User(String id, String name, String lastname, String identityDocument, LocalDateTime birthdate, String phone, String email, String password, Role role, List<Company> companies) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -26,6 +28,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.companies = companies;
     }
 
     public User() {
@@ -101,5 +104,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(List<Company> companies) {
+        this.companies = companies;
     }
 }

@@ -29,4 +29,9 @@ public class UserJpaAdapter implements UserPersistencePort {
     public boolean existsByIdentityDocument(String identityDocument) {
         return userRepository.existsByIdentityDocument(identityDocument);
     }
+
+    @Override
+    public boolean existsById(String id) {
+        return userRepository.existsById(id);
+    }
 }

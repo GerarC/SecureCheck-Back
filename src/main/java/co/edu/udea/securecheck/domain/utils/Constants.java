@@ -12,12 +12,16 @@ public class Constants {
 
     // Empty messages
     public static final String EMPTY_NAME_FIELD_MESSAGE = "'name' field cannot be empty";
+    public static final String EMPTY_NIT_FIELD_MESSAGE = "'nit' field cannot be empty";
+    public static final String EMPTY_NICK_FIELD_MESSAGE = "'nick' field cannot be empty";
     public static final String EMPTY_LASTNAME_FIELD_MESSAGE = "'lastname' field cannot be empty";
     public static final String EMPTY_IDENTITY_DOCUMENT_FIELD_MESSAGE = "'identityDocument' field cannot be empty";
     public static final String EMPTY_BIRTHDATE_FIELD_MESSAGE = "'birthdate' field cannot be empty";
     public static final String EMPTY_PHONE_FIELD_MESSAGE = "'phone' field cannot be empty";
     public static final String EMPTY_EMAIL_FIELD_MESSAGE = "'email' field cannot be empty";
     public static final String EMPTY_PASSWORD_FIELD_MESSAGE = "'password' field cannot be empty";
+    public static final String EMPTY_ADDRESS_FIELD_MESSAGE = "'address' field cannot be empty";
+    public static final String EMPTY_USER_ID_FIELD_MESSAGE = "'user_id' field cannot be empty";
 
     // Regex
     public static final String EMAIL_REGEX_RFC5322 = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*"
