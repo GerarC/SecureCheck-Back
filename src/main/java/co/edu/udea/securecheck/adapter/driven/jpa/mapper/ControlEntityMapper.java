@@ -5,7 +5,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.DomainEntity;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Domain;
 import co.edu.udea.securecheck.domain.utils.Generated;
-import co.edu.udea.securecheck.domain.utils.Pagination;
+import co.edu.udea.securecheck.domain.utils.pagination.Pagination;
 import org.mapstruct.AnnotateWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

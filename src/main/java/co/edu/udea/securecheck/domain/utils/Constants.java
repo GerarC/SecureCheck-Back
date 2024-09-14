@@ -49,4 +49,9 @@ public class Constants {
 
     public static final String ENTITY_NOT_FOUND_MESSAGE = "Entity of type '%s' with id '%s' not found";
     public static final String TYPE_ATTRIBUTE_DOESNT_EXISTS_MESSAGE = "Attribute '%s' doesn't exists in '%s' type";
+
+    public static final Integer DEFAULT_PAGE_NUMBER = 0;
+    public static final Integer DEFAULT_PAGE_SIZE = 10;
+    public static final String DEFAULT_SORT_COLUMN = "id";
+    public static final Boolean DEFAULT_ASCENDING = false;
 }

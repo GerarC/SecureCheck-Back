@@ -8,6 +8,8 @@ import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.utils.SortQuery;
+import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -27,9 +29,9 @@ public class UserUseCase implements UserServicePort {
     }
 
     @Override
-    public List<Company> getUserCompanies(String id) {
+    public List<Company> getUserCompanies(String id, SortQuery sort, CompanyFilter filter) {
         if(!userPersistencePort.existsById(id)) throw  new EntityNotFoundException(User.class.getSimpleName(), id);
-        return List.of();
+        return userPersistencePort.getUserCompanies(id, sort, filter);
     }
 
     private void validateUser(User user) {

@@ -1,7 +1,7 @@
 package co.edu.udea.securecheck.domain.model;
 
 import co.edu.udea.securecheck.domain.utils.Generated;
-import co.edu.udea.securecheck.domain.utils.RoleName;
+import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 
 @Generated
 public class Role {

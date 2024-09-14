@@ -1,14 +1,13 @@
 package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.ControlEntity;
-import co.edu.udea.securecheck.adapter.driven.jpa.entity.DomainEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.ControlEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.PaginationJPAMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.ControlRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.utils.PaginationJPA;
 import co.edu.udea.securecheck.domain.model.Control;
-import co.edu.udea.securecheck.domain.utils.PageQuery;
-import co.edu.udea.securecheck.domain.utils.Pagination;
+import co.edu.udea.securecheck.domain.utils.pagination.PageQuery;
+import co.edu.udea.securecheck.domain.utils.pagination.Pagination;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
