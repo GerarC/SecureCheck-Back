@@ -7,7 +7,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.mapper.SortJPAMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.UserEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
-import co.edu.udea.securecheck.adapter.driven.jpa.speficication.CompanySpecification;
+import co.edu.udea.securecheck.adapter.driven.jpa.specification.CompanySpecification;
 import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Control;

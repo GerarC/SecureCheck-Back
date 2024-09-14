@@ -2,10 +2,7 @@ package co.edu.udea.securecheck.configuration.advisor;
 
 import co.edu.udea.securecheck.configuration.advisor.responses.ExceptionResponse;
 import co.edu.udea.securecheck.configuration.advisor.responses.ValidationExceptionResponse;
-import co.edu.udea.securecheck.domain.exceptions.EmailAlreadyExistsException;
-import co.edu.udea.securecheck.domain.exceptions.IdentityDocumentAlreadyExistsException;
-import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsException;
-import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
+import co.edu.udea.securecheck.domain.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
@@ -73,6 +70,16 @@ public class ExceptionAdvisor {
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }
 
+    @ExceptionHandler(value = {
+            EntityNotFoundException.class,
+    })
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ExceptionResponse> handleNotFoundException(RuntimeException e) {
+        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.NOT_FOUND, e.getMessage());
+        return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
+    }
+
 }
+
 
 

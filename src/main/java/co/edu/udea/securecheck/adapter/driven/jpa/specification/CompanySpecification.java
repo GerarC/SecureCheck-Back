@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.adapter.driven.jpa.speficication;
+package co.edu.udea.securecheck.adapter.driven.jpa.specification;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.CompanyEntity;
 import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;

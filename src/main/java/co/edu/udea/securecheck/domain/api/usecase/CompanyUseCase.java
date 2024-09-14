@@ -26,4 +26,9 @@ public class CompanyUseCase implements CompanyServicePort {
         company.setCreatedAt(LocalDateTime.now());
         return companyPersistencePort.createCompany(company);
     }
+
+    @Override
+    public Company getCompany(String companyId) {
+        return companyPersistencePort.getCompany(companyId);
+    }
 }

@@ -24,4 +24,11 @@ public class CompanyServiceImpl implements CompanyService {
                 companyServicePort.createCompany(company)
         );
     }
+
+    @Override
+    public CompanyResponse getCompany(String companyId) {
+        return companyResponseMapper.toResponse(
+                companyServicePort.getCompany(companyId)
+        );
+    }
 }
