@@ -57,4 +57,20 @@ public class CompanyController {
         );
     }
 
+    @Operation(summary = RestConstants.SWAGGER_DELETE_COMPANY_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = RestConstants.CODE_OK,
+                    description = RestConstants.SWAGGER_DELETE_COMPANY_SUCCESSFUL,
+                    content = @Content(schema = @Schema(implementation = CompanyResponse.class))),
+            @ApiResponse(responseCode = RestConstants.CODE_NOT_FOUND,
+                    description = RestConstants.SWAGGER_GET_COMPANY_NOT_FOUND,
+                    content = @Content(schema = @Schema(implementation = ExceptionResponse.class))),
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CompanyResponse> deleteCompany(@PathVariable String id){
+        return ResponseEntity.ok(
+                companyService.deleteCompany(id)
+        );
+    }
+
 }

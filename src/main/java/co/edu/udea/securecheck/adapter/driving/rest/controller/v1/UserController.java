@@ -43,13 +43,11 @@ public class UserController {
             @PathVariable String id,
             @Parameter(name = "sort",
                     in = ParameterIn.QUERY,
-                    required = true,
                     schema = @Schema(implementation = SortQueryRequest.class),
                     style = ParameterStyle.FORM)
             @Nullable SortQueryRequest sortQueryRequest,
             @Parameter(name = "filter",
                     in = ParameterIn.QUERY,
-                    required = true,
                     schema = @Schema(implementation = CompanyFilterRequest.class),
                     style = ParameterStyle.FORM)
             @Nullable CompanyFilterRequest companyFilterRequest) {

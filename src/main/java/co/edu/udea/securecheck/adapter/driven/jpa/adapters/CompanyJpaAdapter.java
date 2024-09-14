@@ -30,4 +30,9 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
                         .orElseThrow(() -> new EntityNotFoundException(Company.class.getName(), companyId))
         );
     }
+
+    @Override
+    public void deleteCompany(String companyId) {
+        companyRepository.deleteById(companyId);
+    }
 }

@@ -22,7 +22,6 @@ public class RestConstants {
     public static final String SWAGGER_GET_USER_COMPANIES_SUCCESSFUL = "Companies created by the user";
     public static final String SWAGGER_USER_NOT_FOUND = "No user with that id has been found";
 
-
     public static final String SWAGGER_GET_ALL_DOMAIN_SUMMARY = "Return a domain list";
     public static final String SWAGGER_GET_ALL_DOMAIN_SUCCESSFUL = "A list with all domains";
     public static final String SWAGGER_GET_DOMAIN_CONTROLS_SUMMARY = "Search controls of a domain";
@@ -37,6 +36,8 @@ public class RestConstants {
     public static final String SWAGGER_GET_COMPANY_SUMMARY = "Search a company with the given id";
     public static final String SWAGGER_GET_COMPANY_SUCCESSFUL = "return that company";
     public static final String SWAGGER_GET_COMPANY_NOT_FOUND = "Company not found";
+    public static final String SWAGGER_DELETE_COMPANY_SUMMARY = "Deletes a company";
+    public static final String SWAGGER_DELETE_COMPANY_SUCCESSFUL = "company is deleted";
 
 
     public static final String SWAGGER_HOME_END_POINT = "Endpoint to test if API is working";

@@ -37,7 +37,6 @@ public class ControlController {
     public ResponseEntity<PageResponse<ControlResponse>> listControls(
             @Parameter(name = "params",
                     in = ParameterIn.QUERY,
-                    required = true,
                     schema = @Schema(implementation = PageQuery.class),
                     style = ParameterStyle.FORM)
             @RequestParam @Nullable Map<String, String> query) {

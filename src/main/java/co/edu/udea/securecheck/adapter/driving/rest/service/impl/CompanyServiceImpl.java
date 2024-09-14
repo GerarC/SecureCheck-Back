@@ -31,4 +31,11 @@ public class CompanyServiceImpl implements CompanyService {
                 companyServicePort.getCompany(companyId)
         );
     }
+
+    @Override
+    public CompanyResponse deleteCompany(String companyId) {
+        return companyResponseMapper.toResponse(
+                companyServicePort.deleteCompany(companyId)
+        );
+    }
 }

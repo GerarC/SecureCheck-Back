@@ -31,4 +31,11 @@ public class CompanyUseCase implements CompanyServicePort {
     public Company getCompany(String companyId) {
         return companyPersistencePort.getCompany(companyId);
     }
+
+    @Override
+    public Company deleteCompany(String companyId) {
+        Company company = getCompany(companyId);
+        companyPersistencePort.deleteCompany(companyId);
+        return company;
+    }
 }
