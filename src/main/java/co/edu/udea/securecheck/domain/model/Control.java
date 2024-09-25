@@ -2,6 +2,8 @@ package co.edu.udea.securecheck.domain.model;
 
 import co.edu.udea.securecheck.domain.utils.Generated;
 
+import java.util.List;
+
 @Generated
 public class Control {
     private Long id;
@@ -9,13 +11,15 @@ public class Control {
     private String name;
     private String description;
     private Domain domain;
+    private List<Question> questions;
 
-    public Control(Long id, Integer index, String name, String description, Domain domain) {
-        this.id = id;
-        this.index = index;
-        this.name = name;
-        this.description = description;
-        this.domain = domain;
+    private Control(Builder builder) {
+        this.id = builder.id;
+        this.index = builder.index;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.domain = builder.domain;
+        this.questions = builder.questions;
     }
 
     public Control() {
@@ -59,5 +63,64 @@ public class Control {
 
     public void setDomain(Domain domain) {
         this.domain = domain;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Long id;
+        private Integer index;
+        private String name;
+        private String description;
+        private Domain domain;
+        private List<Question> questions;
+
+        public Builder() {
+            // Builder Class
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder index(Integer index) {
+            this.index = index;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder domain(Domain domain) {
+            this.domain = domain;
+            return this;
+        }
+
+        public Builder questions(List<Question> questions) {
+            this.questions = questions;
+            return this;
+        }
+
+        public Control build() {
+            return new Control(this);
+        }
     }
 }

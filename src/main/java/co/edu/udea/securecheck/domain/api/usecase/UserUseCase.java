@@ -6,9 +6,11 @@ import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.exceptions.IdentityDocumentAlreadyExistsException;
 import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import co.edu.udea.securecheck.domain.model.Company;
+import co.edu.udea.securecheck.domain.model.Role;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
+import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
 
 import java.time.LocalDateTime;
@@ -22,10 +24,15 @@ public class UserUseCase implements UserServicePort {
         this.userPersistencePort = userPersistencePort;
     }
 
-    @Override
     public User save(User user) {
         validateUser(user);
         return userPersistencePort.save(user);
+    }
+
+    @Override
+    public User createAuditor(User user) {
+        user.setRole(Role.builder().name(RoleName.AUDITOR).build());
+        return save(user);
     }
 
     @Override

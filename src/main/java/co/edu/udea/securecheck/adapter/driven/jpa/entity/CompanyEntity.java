@@ -1,10 +1,10 @@
 package co.edu.udea.securecheck.adapter.driven.jpa.entity;
 
-import co.edu.udea.securecheck.domain.utils.Generated;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -38,6 +38,9 @@ public class CompanyEntity {
 
     @Column(name = "register_date", nullable = false)
     private LocalDateTime createdAt;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company")
+    private Set<CustomQuestionEntity> questions;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)

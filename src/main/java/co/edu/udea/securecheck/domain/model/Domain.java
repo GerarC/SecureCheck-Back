@@ -12,12 +12,12 @@ public class Domain {
     private String description;
     private Set<Control> controls;
 
-    public Domain(Long id, Integer index, String name, String description, Set<Control> controls) {
-        this.id = id;
-        this.index = index;
-        this.name = name;
-        this.description = description;
-        this.controls = controls;
+    private Domain(Builder builder) {
+        this.id = builder.id;
+        this.index = builder.index;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.controls = builder.controls;
     }
 
     public Domain() {
@@ -61,5 +61,50 @@ public class Domain {
 
     public void setControls(Set<Control> controls) {
         this.controls = controls;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Long id;
+        private Integer index;
+        private String name;
+        private String description;
+        private Set<Control> controls;
+
+        public Builder() {
+            // Builder Class
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder index(Integer index) {
+            this.index = index;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder controls(Set<Control> controls) {
+            this.controls = controls;
+            return this;
+        }
+
+        public Domain build() {
+            return new Domain(this);
+        }
     }
 }

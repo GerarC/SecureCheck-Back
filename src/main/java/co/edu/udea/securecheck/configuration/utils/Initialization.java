@@ -1,14 +1,8 @@
 package co.edu.udea.securecheck.configuration.utils;
 
 
-import co.edu.udea.securecheck.adapter.driven.jpa.entity.ControlEntity;
-import co.edu.udea.securecheck.adapter.driven.jpa.entity.DomainEntity;
-import co.edu.udea.securecheck.adapter.driven.jpa.entity.RoleEntity;
-import co.edu.udea.securecheck.adapter.driven.jpa.entity.UserEntity;
-import co.edu.udea.securecheck.adapter.driven.jpa.repository.ControlRepository;
-import co.edu.udea.securecheck.adapter.driven.jpa.repository.DomainRepository;
-import co.edu.udea.securecheck.adapter.driven.jpa.repository.RoleRepository;
-import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
+import co.edu.udea.securecheck.adapter.driven.jpa.entity.*;
+import co.edu.udea.securecheck.adapter.driven.jpa.repository.*;
 import co.edu.udea.securecheck.domain.utils.Generated;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +22,12 @@ public class Initialization {
     private final RoleRepository roleRepository;
     private final DomainRepository domainRepository;
     private final ControlRepository controlRepository;
+    private final CompanyRepository companyRepository;
+    private final DefaultQuestionRepository defaultQuestionRepository;
+    private final CustomQuestionRepository customQuestionRepository;
     private final PasswordEncoder passwordEncoder;
+
+    private static final String DEFAULT_QUESTION_TEMPLATE = "How is the control for %s being enforced?";
 
     @Bean
     public CommandLineRunner init() {
@@ -51,13 +50,71 @@ public class Initialization {
                             "Admin",
                             "0000000001",
                             LocalDateTime.of(2000, 1, 1, 1, 1),
-                            "+57 3013424656",
+                            "+573013424656",
                             "admin@admin.com",
                             passwordEncoder.encode("#P4ssw0rd*"),
                             roles.get(0),
-                            null)
+                            null
+                    ),
+                    new UserEntity(
+                            null,
+                            "Gerardo",
+                            "Castillo",
+                            "0000000002",
+                            LocalDateTime.of(1995, 2, 15, 10, 0),
+                            "+573123456789",
+                            "gerardoe.castillo@udea.edu.co",
+                            passwordEncoder.encode("password"),
+                            roles.get(1),
+                            null
+                    )
             );
             userRepository.saveAll(users);
+
+            // Example Companies
+            List<CompanyEntity> companies = List.of(
+                    CompanyEntity.builder()
+                            .nit("9009876543")
+                            .name("GreenTech Innovations")
+                            .nick("GreenTech")
+                            .address("101 Green Park, Cartagena")
+                            .contactEmail("contact@greentech.com")
+                            .contactPhone("+57 3217654321")
+                            .createdAt(LocalDateTime.now())
+                            .user(users.get(1))  // John Doe user
+                            .build(),
+                    CompanyEntity.builder()
+                            .nit("9005432189")
+                            .name("Global Solutions Ltd.")
+                            .nick("GlobalSol")
+                            .address("22 Enterprise Street, Barranquilla")
+                            .contactEmail("info@globalsol.com")
+                            .contactPhone("+57 3149876543")
+                            .createdAt(LocalDateTime.now())
+                            .user(users.get(0))  // Admin user
+                            .build(),
+                    CompanyEntity.builder()
+                            .nit("9006789123")
+                            .name("Skyline Enterprises")
+                            .nick("Skyline")
+                            .address("34 Horizon Avenue, Medellín")
+                            .contactEmail("hello@skyline.com")
+                            .contactPhone("+57 3023456789")
+                            .createdAt(LocalDateTime.now())
+                            .user(users.get(0))  // Admin user
+                            .build(),
+                    CompanyEntity.builder()
+                            .nit("9001239876")
+                            .name("TechFuture Co.")
+                            .nick("TechFuture")
+                            .address("76 Tech Plaza, Cali")
+                            .contactEmail("future@techfuture.com")
+                            .contactPhone("+57 3187654321")
+                            .createdAt(LocalDateTime.now())
+                            .user(users.get(1))  // John Doe user
+                            .build()
+            );
+            List<CompanyEntity> companyEntities = companyRepository.saveAll(companies);
 
             DomainEntity domain = DomainEntity.builder()
                     .index(5)
@@ -67,7 +124,7 @@ public class Initialization {
             domainRepository.save(domain);
 
             // Controls for Organizational Controls Domain (A.5)
-            List<ControlEntity> controls = List.of(
+            List<ControlEntity> controlFive = List.of(
                     ControlEntity.builder()
                             .index(1)
                             .name("Information Security Policies")
@@ -291,7 +348,16 @@ public class Initialization {
                             .domain(domain)
                             .build()
             );
-            controlRepository.saveAll(controls);
+            controlRepository.saveAll(controlFive);
+
+            List<DefaultQuestionEntity> defaultFiveQuestions = controlFive.stream()
+                    .map(control -> DefaultQuestionEntity.builder()
+                            .body(String.format(DEFAULT_QUESTION_TEMPLATE, control.getName()))
+                            .control(control)
+                            .build()
+                    ).toList();
+            defaultQuestionRepository.saveAll(defaultFiveQuestions);
+
             // Domains
             DomainEntity personnelDomain = DomainEntity.builder()
                     .index(6)
@@ -352,6 +418,14 @@ public class Initialization {
                             .build()
             );
             controlRepository.saveAll(controlSix);
+
+            List<DefaultQuestionEntity> defaultSixQuestions = controlSix.stream()
+                    .map(control -> DefaultQuestionEntity.builder()
+                            .body(String.format(DEFAULT_QUESTION_TEMPLATE, control.getName()))
+                            .control(control)
+                            .build()
+                    ).toList();
+            defaultQuestionRepository.saveAll(defaultSixQuestions);
 
             DomainEntity physicalDomain = DomainEntity.builder()
                     .index(7)
@@ -448,6 +522,14 @@ public class Initialization {
                             .build()
             );
             controlRepository.saveAll(controlSeven);
+
+            List<DefaultQuestionEntity> defaultSevenQuestions = controlSeven.stream()
+                    .map(control -> DefaultQuestionEntity.builder()
+                            .body(String.format(DEFAULT_QUESTION_TEMPLATE, control.getName()))
+                            .control(control)
+                            .build()
+                    ).toList();
+            defaultQuestionRepository.saveAll(defaultSevenQuestions);
 
 
             DomainEntity techDomain = DomainEntity.builder()
@@ -665,6 +747,28 @@ public class Initialization {
                             .build()
             );
             controlRepository.saveAll(controlsEight);
+
+            List<DefaultQuestionEntity> defaultEightQuestions = controlsEight.stream()
+                    .map(control -> DefaultQuestionEntity.builder()
+                            .body(String.format(DEFAULT_QUESTION_TEMPLATE, control.getName()))
+                            .control(control)
+                            .build()
+                    ).toList();
+            defaultQuestionRepository.saveAll(defaultEightQuestions);
+
+            List<DefaultQuestionEntity> defaultQuestions = defaultQuestionRepository.findAll();
+            companyEntities.forEach(company -> {
+                List<CustomQuestionEntity> customQuestions = defaultQuestions.stream()
+                        .map(question ->
+                                CustomQuestionEntity.builder()
+                                        .company(company)
+                                        .control(question.getControl())
+                                        .body(question.getBody())
+                                        .build()
+                        ).toList();
+                customQuestionRepository.saveAll(customQuestions);
+            });
+
         };
     }
 }

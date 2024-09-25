@@ -22,12 +22,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public RegisterResponse registerAuditor(UserRequest userRequest) {
         User user = userRequestMapper.toDomain(userRequest);
-        user.setRole(new Role(null, RoleName.AUDITOR));
-        return registerUser(user);
-    }
-
-    private RegisterResponse registerUser(User user) {
-        User savedUser = userServicePort.save(user);
+        User savedUser = userServicePort.createAuditor(user);
         return RegisterResponse.builder()
                 .message(String.format(Constants.AUDITOR_REGISTERED_MESSAGE,
                         savedUser.getName(),

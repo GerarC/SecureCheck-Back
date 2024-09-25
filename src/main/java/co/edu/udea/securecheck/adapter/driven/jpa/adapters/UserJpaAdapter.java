@@ -15,6 +15,7 @@ import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
 import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -33,6 +34,7 @@ public class UserJpaAdapter implements UserPersistencePort {
     private final SortJPAMapper sortJPAMapper;
 
     @Override
+    @Transactional
     public User save(User user) {
         UserEntity entity = userEntityMapper.toEntity(user);
         return userEntityMapper.toDomain(userRepository.save(entity));

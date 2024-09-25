@@ -17,7 +17,7 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CompanyRequestMapper {
     default User stringToUser(String userId) {
-        return new User(userId, null, null, null, null, null, null, null, null, null);
+        return User.builder().id(userId).build();
     }
 
     @Mapping(target = "user", source = "userId")

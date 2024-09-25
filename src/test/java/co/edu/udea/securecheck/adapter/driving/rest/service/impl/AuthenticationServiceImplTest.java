@@ -52,17 +52,35 @@ class AuthenticationServiceImplTest {
                 .phone("+573332223232")
                 .password("password")
                 .build();
-        User mockUser = new User( null, "admin", "admin", "0000000001", LocalDateTime.MIN, "+573332223232", "admin@admin.com", "password", null, null);
-        User returnedMockUser = new User( null, "admin", "admin", "0000000001", LocalDateTime.MIN, "+573332223232", "admin@admin.com", "password", new Role(null, RoleName.ADMIN), null);
+        User mockUser = User.builder()
+                .name("admin")
+                .lastname("admin")
+                .identityDocument("0000000001")
+                .birthdate(LocalDateTime.MIN)
+                .phone("+573332223232")
+                .email("admin@admin.com")
+                .password("password")
+                .build();
+
+        User returnedMockUser = User.builder()
+                .name("admin")
+                .lastname("admin")
+                .identityDocument("0000000001")
+                .birthdate(LocalDateTime.MIN)
+                .phone("+573332223232")
+                .email("admin@admin.com")
+                .password("password")
+                .role(Role.builder().name(RoleName.AUDITOR).build())
+                .build();
         // Define what should happen
         when(userRequestMapper.toDomain(userRequest)).thenReturn(mockUser);
-        when(userServicePort.save(any())).thenReturn(returnedMockUser);
+        when(userServicePort.createAuditor(any())).thenReturn(returnedMockUser);
 
         // Test
         RegisterResponse actualRegisterResponse = authenticationService.registerAuditor(userRequest);
 
         // Verify
-        verify(userServicePort).save(any());
+        verify(userServicePort).createAuditor(any());
         assertNotNull(actualRegisterResponse);
         assertEquals(registerResponse, actualRegisterResponse);
     }

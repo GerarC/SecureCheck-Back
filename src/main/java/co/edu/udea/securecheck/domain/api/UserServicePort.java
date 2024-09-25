@@ -8,6 +8,6 @@ import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
 import java.util.List;
 
 public interface UserServicePort {
-    User save(User user);
+    User createAuditor(User user);
     List<Company> getUserCompanies(String id, SortQuery sort, CompanyFilter filter);
 }

@@ -3,6 +3,7 @@ package co.edu.udea.securecheck.domain.model;
 import co.edu.udea.securecheck.domain.utils.Generated;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Generated
 public class Company {
@@ -14,18 +15,20 @@ public class Company {
     private String contactEmail;
     private String contactPhone;
     private LocalDateTime createdAt;
+    private List<Question> questions;
     private User user;
 
-    public Company(String id, String nit, String name, String nick, String address, String contactEmail, String contactPhone, LocalDateTime createdAt, User user) {
-        this.id = id;
-        this.nit = nit;
-        this.name = name;
-        this.nick = nick;
-        this.address = address;
-        this.contactEmail = contactEmail;
-        this.contactPhone = contactPhone;
-        this.createdAt = createdAt;
-        this.user = user;
+    private Company(Builder builder) {
+        this.id = builder.id;
+        this.nit = builder.nit;
+        this.name = builder.name;
+        this.nick = builder.nick;
+        this.address = builder.address;
+        this.contactEmail = builder.contactEmail;
+        this.contactPhone = builder.contactPhone;
+        this.createdAt = builder.createdAt;
+        this.questions = builder.questions;
+        this.user = builder.user;
     }
 
     public Company() {
@@ -101,5 +104,88 @@ public class Company {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String id;
+        private String nit;
+        private String name;
+        private String nick;
+        private String address;
+        private String contactEmail;
+        private String contactPhone;
+        private LocalDateTime createdAt;
+        private List<Question> questions;
+        private User user;
+
+        public Builder() {
+            // It's a Builder class
+        }
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder nit(String nit) {
+            this.nit = nit;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder nick(String nick) {
+            this.nick = nick;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder contactEmail(String contactEmail) {
+            this.contactEmail = contactEmail;
+            return this;
+        }
+
+        public Builder contactPhone(String contactPhone) {
+            this.contactPhone = contactPhone;
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder questions(List<Question> questions) {
+            this.questions = questions;
+            return this;
+        }
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Company build() {
+            return new Company(this);
+        }
     }
 }

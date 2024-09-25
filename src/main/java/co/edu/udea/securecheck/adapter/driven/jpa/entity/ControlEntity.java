@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +18,7 @@ public class ControlEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "control_id", nullable = false, updatable = false)
     private Long id;
+
     @Column(name = "index", nullable = false)
     private Integer index;
 
@@ -29,4 +32,7 @@ public class ControlEntity {
     @ManyToOne
     @JoinColumn(name = "domain_id")
     private DomainEntity domain;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "control")
+    private Set<CustomQuestionEntity> questions;
 }

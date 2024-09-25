@@ -8,10 +8,7 @@ import co.edu.udea.securecheck.domain.api.usecase.CompanyUseCase;
 import co.edu.udea.securecheck.domain.api.usecase.ControlUseCase;
 import co.edu.udea.securecheck.domain.api.usecase.DomainUseCase;
 import co.edu.udea.securecheck.domain.api.usecase.UserUseCase;
-import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
-import co.edu.udea.securecheck.domain.spi.ControlPersistencePort;
-import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
-import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.spi.*;
 import co.edu.udea.securecheck.domain.utils.Generated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,9 +24,11 @@ public class BeanConfiguration {
     private final DomainPersistencePort domainPersistencePort;
     private final ControlPersistencePort controlPersistencePort;
     private final CompanyPersistencePort companyPersistencePort;
+    private final DefaultQuestionPersistencePort defaultQuestionPersistencePort;
+    private final CustomQuestionPersistencePort customQuestionPersistencePort;
 
     @Bean
-    public UserServicePort userServicePort(){
+    public UserServicePort userServicePort() {
         return new UserUseCase(userPersistencePort);
     }
 
@@ -39,13 +38,18 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public ControlServicePort controlServicePort(){
+    public ControlServicePort controlServicePort() {
         return new ControlUseCase(controlPersistencePort);
     }
 
     @Bean
     public CompanyServicePort companyServicePort() {
-        return new CompanyUseCase(companyPersistencePort, userPersistencePort);
+        return new CompanyUseCase(
+                companyPersistencePort,
+                userPersistencePort,
+                defaultQuestionPersistencePort,
+                customQuestionPersistencePort
+        );
     }
 
     // Security

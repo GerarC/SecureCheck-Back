@@ -6,6 +6,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
 import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
     private final CompanyEntityMapper companyEntityMapper;
 
     @Override
+    @Transactional
     public Company createCompany(Company company) {
         CompanyEntity entity = companyEntityMapper.toEntity(company);
         return companyEntityMapper.toDomain(
@@ -26,12 +28,12 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
     @Override
     public Company getCompany(String companyId) {
         return companyEntityMapper.toDomain(
-                companyRepository.findById(companyId)
-                        .orElseThrow(() -> new EntityNotFoundException(Company.class.getName(), companyId))
+                companyRepository.findById(companyId).orElse(null)
         );
     }
 
     @Override
+    @Transactional
     public void deleteCompany(String companyId) {
         companyRepository.deleteById(companyId);
     }

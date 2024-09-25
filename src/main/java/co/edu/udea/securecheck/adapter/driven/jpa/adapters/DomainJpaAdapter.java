@@ -7,6 +7,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.utils.JpaConstants;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Domain;
 import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
+import co.edu.udea.securecheck.domain.utils.StreamUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -29,10 +30,10 @@ public class DomainJpaAdapter implements DomainPersistencePort {
         DomainEntity domainEntity = domainRepository.findById(id).orElse(null);
         assert domainEntity != null : JpaConstants.ENTITY_SHOULD_BE_VERIFIED_IN_DOMAIN_MESSAGE;
         Domain domain = domainEntityMapper.toDomain(domainEntity);
-        return domain.getControls().stream().map(control -> {
+        return StreamUtils.map(domain.getControls(), control -> {
             control.setDomain(domain);
             return control;
-        }).toList();
+        });
     }
 
     @Override
