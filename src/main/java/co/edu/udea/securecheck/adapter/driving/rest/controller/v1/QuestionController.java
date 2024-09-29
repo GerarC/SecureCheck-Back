@@ -7,6 +7,7 @@ import co.edu.udea.securecheck.adapter.driving.rest.utils.RestConstants;
 import co.edu.udea.securecheck.configuration.advisor.responses.ExceptionResponse;
 import co.edu.udea.securecheck.configuration.advisor.responses.ValidationExceptionResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,10 +16,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/questions")
@@ -46,6 +46,21 @@ public class QuestionController {
     public ResponseEntity<QuestionResponse> createQuestion(@RequestBody @Valid QuestionRequest questionRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 questionService.createQuestion(questionRequest)
+        );
+    }
+
+    @Operation(summary = RestConstants.SWAGGER_CREATE_QUESTION_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = RestConstants.CODE_CREATED,
+                    description = RestConstants.SWAGGER_CREATE_QUESTION_SUCCESSFUL,
+                    content = @Content(
+                            array = @ArraySchema(schema = @Schema(implementation = QuestionResponse.class)))
+            ),
+    })
+    @GetMapping
+    public ResponseEntity<List<QuestionResponse>> getAllQuestions() {
+        return ResponseEntity.ok(
+                questionService.getAllQuestions()
         );
     }
 }

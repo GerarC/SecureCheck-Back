@@ -47,7 +47,7 @@ public class CompanyUseCase implements CompanyServicePort {
     @Override
     public Company getCompany(String companyId) {
         Company company = companyPersistencePort.getCompany(companyId);
-        if(company == null) throw new EntityNotFoundException(Company.class.getSimpleName(), companyId);
+        if (company == null) throw new EntityNotFoundException(Company.class.getSimpleName(), companyId);
         return company;
     }
 
@@ -56,6 +56,13 @@ public class CompanyUseCase implements CompanyServicePort {
         Company company = getCompany(companyId);
         companyPersistencePort.deleteCompany(companyId);
         return company;
+    }
+
+    @Override
+    public List<Question> getCompanyQuestions(String companyId) {
+        if (!companyPersistencePort.existsById(companyId))
+            throw new EntityNotFoundException(Company.class.getSimpleName(), companyId);
+        return companyPersistencePort.getCompanyQuestions(companyId);
     }
 
     private List<Question> createDefaultQuestions(Company company) {

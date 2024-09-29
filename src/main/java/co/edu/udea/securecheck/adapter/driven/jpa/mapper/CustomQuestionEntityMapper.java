@@ -41,4 +41,9 @@ public interface CustomQuestionEntityMapper {
 
     CustomQuestionEntity toEntity(Question question);
     List<CustomQuestionEntity> toEntities(List<Question> questions);
+
+    @Mapping(target = "control", ignore = true)
+    @Mapping(target = "company", ignore = true)
+    Question toDomainWithoutExtraData(CustomQuestionEntity questionEntity);
+    List<Question> toDomainWithoutExtraData(List<CustomQuestionEntity> questionEntities);
 }
