@@ -47,7 +47,7 @@ public class CompanyController {
                     description = RestConstants.SWAGGER_GET_COMPANY_SUCCESSFUL,
                     content = @Content(schema = @Schema(implementation = CompanyResponse.class))),
             @ApiResponse(responseCode = RestConstants.CODE_NOT_FOUND,
-                    description = RestConstants.SWAGGER_GET_COMPANY_NOT_FOUND,
+                    description = RestConstants.SWAGGER_COMPANY_NOT_FOUND,
                     content = @Content(schema = @Schema(implementation = ExceptionResponse.class))),
     })
     @GetMapping("/{id}")
@@ -63,7 +63,7 @@ public class CompanyController {
                     description = RestConstants.SWAGGER_DELETE_COMPANY_SUCCESSFUL,
                     content = @Content(schema = @Schema(implementation = CompanyResponse.class))),
             @ApiResponse(responseCode = RestConstants.CODE_NOT_FOUND,
-                    description = RestConstants.SWAGGER_GET_COMPANY_NOT_FOUND,
+                    description = RestConstants.SWAGGER_COMPANY_NOT_FOUND,
                     content = @Content(schema = @Schema(implementation = ExceptionResponse.class))),
     })
     @DeleteMapping("/{id}")

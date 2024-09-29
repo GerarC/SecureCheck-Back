@@ -1,13 +1,7 @@
 package co.edu.udea.securecheck.configuration;
 
-import co.edu.udea.securecheck.domain.api.CompanyServicePort;
-import co.edu.udea.securecheck.domain.api.ControlServicePort;
-import co.edu.udea.securecheck.domain.api.DomainServicePort;
-import co.edu.udea.securecheck.domain.api.UserServicePort;
-import co.edu.udea.securecheck.domain.api.usecase.CompanyUseCase;
-import co.edu.udea.securecheck.domain.api.usecase.ControlUseCase;
-import co.edu.udea.securecheck.domain.api.usecase.DomainUseCase;
-import co.edu.udea.securecheck.domain.api.usecase.UserUseCase;
+import co.edu.udea.securecheck.domain.api.*;
+import co.edu.udea.securecheck.domain.api.usecase.*;
 import co.edu.udea.securecheck.domain.spi.*;
 import co.edu.udea.securecheck.domain.utils.Generated;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +43,15 @@ public class BeanConfiguration {
                 userPersistencePort,
                 defaultQuestionPersistencePort,
                 customQuestionPersistencePort
+        );
+    }
+
+    @Bean
+    public QuestionServicePort questionServicePort() {
+        return new QuestionUseCase(
+                customQuestionPersistencePort,
+                controlPersistencePort,
+                companyPersistencePort
         );
     }
 

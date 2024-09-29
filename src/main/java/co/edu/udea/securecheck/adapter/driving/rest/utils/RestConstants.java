@@ -26,7 +26,6 @@ public class RestConstants {
     public static final String SWAGGER_GET_ALL_DOMAIN_SUCCESSFUL = "A list with all domains";
     public static final String SWAGGER_GET_DOMAIN_CONTROLS_SUMMARY = "Search controls of a domain";
     public static final String SWAGGER_GET_DOMAIN_CONTROLS_SUCCESSFUL = "A list with the found controls";
-    public static final String SWAGGER_GET_DOMAIN_NOT_FOUND = "Domain not found";
 
     public static final String SWAGGER_GET_ALL_CONTROL_SUMMARY = "Return a control page, depending on the query";
     public static final String SWAGGER_GET_ALL_CONTROL_SUCCESSFUL = "A bunch of controls controls";
@@ -35,10 +34,18 @@ public class RestConstants {
     public static final String SWAGGER_CREATE_COMPANY_SUCCESSFUL = "company is created";
     public static final String SWAGGER_GET_COMPANY_SUMMARY = "Search a company with the given id";
     public static final String SWAGGER_GET_COMPANY_SUCCESSFUL = "return that company";
-    public static final String SWAGGER_GET_COMPANY_NOT_FOUND = "Company not found";
     public static final String SWAGGER_DELETE_COMPANY_SUMMARY = "Deletes a company";
     public static final String SWAGGER_DELETE_COMPANY_SUCCESSFUL = "company is deleted";
 
+    public static final String SWAGGER_CREATE_QUESTION_SUMMARY = "create a new custom question";
+    public static final String SWAGGER_CREATE_QUESTION_SUCCESSFUL = "question is created";
+
+
+    // Something Not found messages
+    public static final String SWAGGER_CONTROL_NOT_FOUND = "Control not found";
+    public static final String SWAGGER_COMPANY_NOT_FOUND = "Company not found";
+    public static final String SWAGGER_DOMAIN_NOT_FOUND = "Domain not found";
+    public static final String SWAGGER_QUESTION_NOT_FOUND = "Question not found";
 
     public static final String SWAGGER_HOME_END_POINT = "Endpoint to test if API is working";
 

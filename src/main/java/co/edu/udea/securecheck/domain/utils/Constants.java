@@ -7,6 +7,8 @@ public class Constants {
         throw new IllegalStateException("Utility constants class");
     }
 
+    public static final Integer MAX_QUESTION_SIZE = 255;
+
     // Registered Message
     public static final String AUDITOR_REGISTERED_MESSAGE = "'%s %s' with '%s' email has been registered";
 
@@ -21,7 +23,11 @@ public class Constants {
     public static final String EMPTY_EMAIL_FIELD_MESSAGE = "'email' field cannot be empty";
     public static final String EMPTY_PASSWORD_FIELD_MESSAGE = "'password' field cannot be empty";
     public static final String EMPTY_ADDRESS_FIELD_MESSAGE = "'address' field cannot be empty";
-    public static final String EMPTY_USER_ID_FIELD_MESSAGE = "'user_id' field cannot be empty";
+    public static final String EMPTY_USER_ID_FIELD_MESSAGE = "'userId' field cannot be empty";
+    public static final String EMPTY_BODY_FIELD_MESSAGE = "'body' field cannot be empty";
+    public static final String EMPTY_CONTROL_ID_FIELD_MESSAGE = "'controlId' field cannot be empty";
+    public static final String EMPTY_COMPANY_ID_FIELD_MESSAGE = "'companyId' field cannot be empty";
+
 
     // Regex
     public static final String EMAIL_REGEX_RFC5322 = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*"

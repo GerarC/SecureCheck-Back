@@ -5,5 +5,6 @@ import co.edu.udea.securecheck.domain.model.Company;
 public interface CompanyPersistencePort {
     Company createCompany(Company company);
     Company getCompany(String companyId);
+    boolean existsById(String id);
     void deleteCompany(String companyId);
 }

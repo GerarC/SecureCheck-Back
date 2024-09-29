@@ -31,4 +31,9 @@ public class ControlJpaAdapter implements ControlPersistencePort {
             throw new TypeAttributeDoesntExistsException(pageQuery.getSortBy(), Control.class.getSimpleName());
         }
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        return controlRepository.existsById(id);
+    }
 }

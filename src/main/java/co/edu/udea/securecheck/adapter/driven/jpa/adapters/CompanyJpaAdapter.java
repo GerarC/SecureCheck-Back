@@ -3,7 +3,6 @@ package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.CompanyEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CompanyEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
-import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
 import jakarta.transaction.Transactional;
@@ -30,6 +29,11 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
         return companyEntityMapper.toDomain(
                 companyRepository.findById(companyId).orElse(null)
         );
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        return companyRepository.existsById(id);
     }
 
     @Override

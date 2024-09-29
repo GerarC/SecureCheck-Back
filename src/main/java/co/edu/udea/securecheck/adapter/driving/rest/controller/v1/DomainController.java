@@ -44,7 +44,7 @@ public class DomainController {
                     description = RestConstants.SWAGGER_GET_DOMAIN_CONTROLS_SUCCESSFUL,
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ControlResponse.class)))),
             @ApiResponse(responseCode = RestConstants.CODE_NOT_FOUND,
-                    description = RestConstants.SWAGGER_GET_DOMAIN_NOT_FOUND,
+                    description = RestConstants.SWAGGER_DOMAIN_NOT_FOUND,
                     content = @Content(schema = @Schema(implementation = ExceptionResponse.class))),
     })
     @GetMapping("/{id}/controls")

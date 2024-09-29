@@ -6,4 +6,5 @@ import co.edu.udea.securecheck.domain.utils.pagination.Pagination;
 
 public interface ControlPersistencePort {
     Pagination<Control> getControls(PageQuery pageQuery);
+    boolean existsById(Long id);
 }
