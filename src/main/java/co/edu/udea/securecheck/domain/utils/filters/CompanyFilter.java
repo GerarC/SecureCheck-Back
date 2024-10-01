@@ -1,6 +1,6 @@
 package co.edu.udea.securecheck.domain.utils.filters;
 
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 
 import java.time.LocalDateTime;
 

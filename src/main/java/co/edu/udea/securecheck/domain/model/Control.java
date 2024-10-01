@@ -1,6 +1,6 @@
 package co.edu.udea.securecheck.domain.model;
 
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 
 import java.util.List;
 

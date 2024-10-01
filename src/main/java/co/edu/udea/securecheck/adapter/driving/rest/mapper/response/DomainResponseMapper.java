@@ -2,7 +2,7 @@ package co.edu.udea.securecheck.adapter.driving.rest.mapper.response;
 
 import co.edu.udea.securecheck.adapter.driving.rest.dto.response.DomainResponse;
 import co.edu.udea.securecheck.domain.model.Domain;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import org.mapstruct.AnnotateWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

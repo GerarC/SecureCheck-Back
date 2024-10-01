@@ -6,11 +6,8 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.CustomQuestionEntity;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.utils.Generated;
-import org.mapstruct.AnnotateWith;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -44,6 +41,9 @@ public interface CustomQuestionEntityMapper {
 
     @Mapping(target = "control", ignore = true)
     @Mapping(target = "company", ignore = true)
+    @Named("questionWithoutExtraData")
     Question toDomainWithoutExtraData(CustomQuestionEntity questionEntity);
+
+    @Mapping(target = "customQuestionEntity", qualifiedByName = "questionWithoutExtraData")
     List<Question> toDomainWithoutExtraData(List<CustomQuestionEntity> questionEntities);
 }

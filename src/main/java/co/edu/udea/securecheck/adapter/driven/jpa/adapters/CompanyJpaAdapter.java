@@ -1,14 +1,19 @@
 package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.CompanyEntity;
+import co.edu.udea.securecheck.adapter.driven.jpa.entity.CustomQuestionEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CompanyEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CustomQuestionEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
+import co.edu.udea.securecheck.adapter.driven.jpa.repository.CustomQuestionRepository;
+import co.edu.udea.securecheck.adapter.driven.jpa.specification.QuestionSpecification;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Question;
 import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
+import co.edu.udea.securecheck.domain.utils.filters.QuestionFilter;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompanyJpaAdapter implements CompanyPersistencePort {
     private final CompanyRepository companyRepository;
+    private final CustomQuestionRepository customQuestionRepository;
     private final CompanyEntityMapper companyEntityMapper;
     private final CustomQuestionEntityMapper customQuestionEntityMapper;
 
@@ -48,11 +54,11 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
     }
 
     @Override
-    public List<Question> getCompanyQuestions(String id) {
-        CompanyEntity entity = companyRepository.findById(id).orElse(null);
-        if (entity == null) return List.of();
+    public List<Question> getCompanyQuestions(QuestionFilter questionFilter) {
+        Specification<CustomQuestionEntity> specs = QuestionSpecification.filterBy(questionFilter);
+        List<CustomQuestionEntity> customQuestionEntities = customQuestionRepository.findAll(specs);
         return customQuestionEntityMapper.toDomainWithoutExtraData(
-                entity.getQuestions().stream().toList()
+                customQuestionEntities
         );
     }
 }

@@ -1,6 +1,6 @@
 package co.edu.udea.securecheck.domain.utils.pagination;
 
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 
 import java.util.List;
 

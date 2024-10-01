@@ -1,7 +1,7 @@
 package co.edu.udea.securecheck.domain.utils.pagination;
 
 import co.edu.udea.securecheck.domain.utils.Constants;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 
 import java.util.Map;
 

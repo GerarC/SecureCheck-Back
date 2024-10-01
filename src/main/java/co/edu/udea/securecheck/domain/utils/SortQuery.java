@@ -1,5 +1,7 @@
 package co.edu.udea.securecheck.domain.utils;
 
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
+
 @Generated
 public class SortQuery {
     private String sortBy;

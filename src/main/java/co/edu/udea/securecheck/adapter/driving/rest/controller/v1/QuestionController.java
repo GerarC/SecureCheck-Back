@@ -48,19 +48,4 @@ public class QuestionController {
                 questionService.createQuestion(questionRequest)
         );
     }
-
-    @Operation(summary = RestConstants.SWAGGER_CREATE_QUESTION_SUMMARY)
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = RestConstants.CODE_CREATED,
-                    description = RestConstants.SWAGGER_CREATE_QUESTION_SUCCESSFUL,
-                    content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = QuestionResponse.class)))
-            ),
-    })
-    @GetMapping
-    public ResponseEntity<List<QuestionResponse>> getAllQuestions() {
-        return ResponseEntity.ok(
-                questionService.getAllQuestions()
-        );
-    }
 }

@@ -3,7 +3,7 @@ package co.edu.udea.securecheck.configuration.utils;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.*;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.*;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

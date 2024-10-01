@@ -4,7 +4,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.ControlEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.DefaultQuestionEntity;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import org.mapstruct.AnnotateWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

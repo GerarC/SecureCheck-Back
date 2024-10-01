@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.utils;
+package co.edu.udea.securecheck.domain.utils.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

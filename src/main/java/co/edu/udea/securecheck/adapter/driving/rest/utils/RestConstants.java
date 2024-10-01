@@ -36,6 +36,8 @@ public class RestConstants {
     public static final String SWAGGER_GET_COMPANY_SUCCESSFUL = "return that company";
     public static final String SWAGGER_DELETE_COMPANY_SUMMARY = "Deletes a company";
     public static final String SWAGGER_DELETE_COMPANY_SUCCESSFUL = "company is deleted";
+    public static final String SWAGGER_GET_COMPANY_QUESTIONS_SUMMARY = "Get company questions";
+    public static final String SWAGGER_GET_COMPANY_QUESTIONS_SUCCESSFUL = "A list with found questions";
 
     public static final String SWAGGER_CREATE_QUESTION_SUMMARY = "create a new custom question";
     public static final String SWAGGER_CREATE_QUESTION_SUCCESSFUL = "question is created";

@@ -10,6 +10,7 @@ import co.edu.udea.securecheck.domain.spi.CustomQuestionPersistencePort;
 import co.edu.udea.securecheck.domain.spi.DefaultQuestionPersistencePort;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.StreamUtils;
+import co.edu.udea.securecheck.domain.utils.filters.QuestionFilter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -59,15 +60,17 @@ public class CompanyUseCase implements CompanyServicePort {
     }
 
     @Override
-    public List<Question> getCompanyQuestions(String companyId) {
+    public List<Question> getCompanyQuestions(String companyId, QuestionFilter filter) {
+        filter.setCompanyId(companyId);
         if (!companyPersistencePort.existsById(companyId))
             throw new EntityNotFoundException(Company.class.getSimpleName(), companyId);
-        return companyPersistencePort.getCompanyQuestions(companyId);
+        return companyPersistencePort.getCompanyQuestions(filter);
     }
 
     private List<Question> createDefaultQuestions(Company company) {
         List<Question> defaultQuestions = defaultQuestionPersistencePort.getAll();
         return StreamUtils.map(defaultQuestions, question -> {
+            question.setId(null);
             question.setCompany(
                     Company.builder().id(company.getId()).build()
             );

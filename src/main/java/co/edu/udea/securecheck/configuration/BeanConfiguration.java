@@ -3,7 +3,7 @@ package co.edu.udea.securecheck.configuration;
 import co.edu.udea.securecheck.domain.api.*;
 import co.edu.udea.securecheck.domain.api.usecase.*;
 import co.edu.udea.securecheck.domain.spi.*;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

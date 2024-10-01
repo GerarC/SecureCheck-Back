@@ -16,6 +16,7 @@ import java.util.Set;
 public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "company_id", nullable = false, updatable = false)
     private String id;
 
     @Column(name = "nit", nullable = false)

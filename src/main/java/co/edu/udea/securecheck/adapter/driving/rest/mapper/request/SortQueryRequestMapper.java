@@ -1,7 +1,7 @@
 package co.edu.udea.securecheck.adapter.driving.rest.mapper.request;
 
 import co.edu.udea.securecheck.adapter.driving.rest.dto.request.SortQueryRequest;
-import co.edu.udea.securecheck.domain.utils.Generated;
+import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
 import org.mapstruct.AnnotateWith;
 import org.mapstruct.Mapper;
