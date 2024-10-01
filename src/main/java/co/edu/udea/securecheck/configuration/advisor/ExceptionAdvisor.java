@@ -6,6 +6,7 @@ import co.edu.udea.securecheck.domain.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -47,9 +48,9 @@ public class ExceptionAdvisor {
                 }).toList())
                 .message(e.getBody().getDetail()).build();
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
-   }
+    }
 
-@ExceptionHandler(value = {
+    @ExceptionHandler(value = {
             IdentityDocumentAlreadyExistsException.class,
             EmailAlreadyExistsException.class,
             UnderageUserException.class,
@@ -79,6 +80,13 @@ public class ExceptionAdvisor {
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }
 
+    @ExceptionHandler(value = {
+            BadCredentialsException.class,
+    })
+    public ResponseEntity<ExceptionResponse> handleUnauthorizedException(RuntimeException e) {
+        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.UNAUTHORIZED, e.getMessage());
+        return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
+    }
 }
 
 

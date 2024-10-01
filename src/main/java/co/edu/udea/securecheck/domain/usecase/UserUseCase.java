@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.api.usecase;
+package co.edu.udea.securecheck.domain.usecase;
 
 import co.edu.udea.securecheck.domain.api.UserServicePort;
 import co.edu.udea.securecheck.domain.exceptions.EmailAlreadyExistsException;
@@ -9,6 +9,7 @@ import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Role;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.utils.Constants;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
@@ -39,6 +40,20 @@ public class UserUseCase implements UserServicePort {
     public List<Company> getUserCompanies(String id, SortQuery sort, CompanyFilter filter) {
         if(!userPersistencePort.existsById(id)) throw  new EntityNotFoundException(User.class.getSimpleName(), id);
         return userPersistencePort.getUserCompanies(id, sort, filter);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        User user = userPersistencePort.getUserByEmail(email);
+        if (user == null) throw new EntityNotFoundException(String.format(Constants.USER_WITH_EMAIL_NOT_FOUND_MESSAGE, email));
+        return user;
+    }
+
+    @Override
+    public User getUser(String id) {
+        User user = userPersistencePort.getUser(id);
+        if (user == null) throw new EntityNotFoundException(User.class.getSimpleName(), id);
+        return user;
     }
 
     private void validateUser(User user) {

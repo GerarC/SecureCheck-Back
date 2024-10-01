@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.api.usecase;
+package co.edu.udea.securecheck.domain.usecase;
 
 import co.edu.udea.securecheck.domain.api.ControlServicePort;
 import co.edu.udea.securecheck.domain.model.Control;

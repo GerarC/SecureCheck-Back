@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserServicePort {
     User createAuditor(User user);
     List<Company> getUserCompanies(String id, SortQuery sort, CompanyFilter filter);
+    User getUserByEmail(String email);
+    User getUser(String id);
 }

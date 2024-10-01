@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.api.usecase;
+package co.edu.udea.securecheck.domain.usecase;
 
 import co.edu.udea.securecheck.domain.api.DomainServicePort;
 import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;

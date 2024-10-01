@@ -1,11 +1,13 @@
 package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.CompanyEntity;
+import co.edu.udea.securecheck.adapter.driven.jpa.entity.RoleEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.UserEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CompanyEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.SortJPAMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.UserEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
+import co.edu.udea.securecheck.adapter.driven.jpa.repository.RoleRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.UserRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.specification.CompanySpecification;
 import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsException;
@@ -29,6 +31,7 @@ import java.util.List;
 public class UserJpaAdapter implements UserPersistencePort {
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
+    private final RoleRepository roleRepository;
     private final UserEntityMapper userEntityMapper;
     private final CompanyEntityMapper companyEntityMapper;
     private final SortJPAMapper sortJPAMapper;
@@ -36,7 +39,9 @@ public class UserJpaAdapter implements UserPersistencePort {
     @Override
     @Transactional
     public User save(User user) {
+        RoleEntity role = roleRepository.findByName(user.getRole().getName()).orElse(null);
         UserEntity entity = userEntityMapper.toEntity(user);
+        entity.setRole(role);
         return userEntityMapper.toDomain(userRepository.save(entity));
     }
 
@@ -53,6 +58,20 @@ public class UserJpaAdapter implements UserPersistencePort {
     @Override
     public boolean existsById(String id) {
         return userRepository.existsById(id);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userEntityMapper.toDomain(
+                userRepository.findByEmail(email).orElse(null)
+        );
+    }
+
+    @Override
+    public User getUser(String id) {
+        return userEntityMapper.toDomain(
+                userRepository.findById(id).orElse(null)
+        );
     }
 
     @Override

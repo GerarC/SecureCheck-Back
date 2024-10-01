@@ -6,6 +6,7 @@ import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import co.edu.udea.securecheck.domain.model.Role;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.usecase.UserUseCase;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

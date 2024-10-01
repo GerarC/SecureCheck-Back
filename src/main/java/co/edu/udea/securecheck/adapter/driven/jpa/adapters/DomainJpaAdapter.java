@@ -1,6 +1,7 @@
 package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.DomainEntity;
+import co.edu.udea.securecheck.adapter.driven.jpa.exceptions.NotDomainVerifiedException;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.DomainEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.DomainRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.utils.JpaConstants;
@@ -28,7 +29,7 @@ public class DomainJpaAdapter implements DomainPersistencePort {
     @Override
     public List<Control> getDomainControls(Long id) {
         DomainEntity domainEntity = domainRepository.findById(id).orElse(null);
-        assert domainEntity != null : JpaConstants.ENTITY_SHOULD_BE_VERIFIED_IN_DOMAIN_MESSAGE;
+        if(domainEntity == null) throw new NotDomainVerifiedException();
         Domain domain = domainEntityMapper.toDomain(domainEntity);
         return StreamUtils.map(domain.getControls(), control -> {
             control.setDomain(domain);

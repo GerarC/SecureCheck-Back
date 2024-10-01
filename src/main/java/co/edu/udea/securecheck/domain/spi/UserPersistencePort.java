@@ -12,5 +12,7 @@ public interface UserPersistencePort {
     boolean existsByEmail(String email);
     boolean existsByIdentityDocument(String identityDocument);
     boolean existsById(String id);
+    User getUserByEmail(String email);
+    User getUser(String id);
     List<Company> getUserCompanies(String id, SortQuery sort, CompanyFilter filter);
 }

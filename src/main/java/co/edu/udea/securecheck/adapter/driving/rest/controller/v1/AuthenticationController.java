@@ -1,6 +1,8 @@
 package co.edu.udea.securecheck.adapter.driving.rest.controller.v1;
 
+import co.edu.udea.securecheck.adapter.driving.rest.dto.request.AuthenticationRequest;
 import co.edu.udea.securecheck.adapter.driving.rest.dto.request.UserRequest;
+import co.edu.udea.securecheck.adapter.driving.rest.dto.response.AuthenticationResponse;
 import co.edu.udea.securecheck.adapter.driving.rest.dto.response.RegisterResponse;
 import co.edu.udea.securecheck.adapter.driving.rest.service.AuthenticationService;
 import co.edu.udea.securecheck.adapter.driving.rest.utils.RestConstants;
@@ -42,5 +44,10 @@ public class AuthenticationController {
     @PostMapping("/register/auditor")
     public ResponseEntity<RegisterResponse> registerAuditor(@RequestBody @Valid UserRequest userRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authenticationService.registerAuditor(userRequest));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request){
+        return ResponseEntity.accepted().body(authenticationService.login(request));
     }
 }
