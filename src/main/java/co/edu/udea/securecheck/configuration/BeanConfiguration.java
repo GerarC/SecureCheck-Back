@@ -3,11 +3,11 @@ package co.edu.udea.securecheck.configuration;
 import co.edu.udea.securecheck.domain.api.*;
 import co.edu.udea.securecheck.domain.api.security.AuthenticationServicePort;
 import co.edu.udea.securecheck.domain.api.security.TokenServicePort;
+import co.edu.udea.securecheck.domain.spi.persistence.*;
 import co.edu.udea.securecheck.domain.usecase.*;
 import co.edu.udea.securecheck.domain.usecase.security.AuthenticationUseCase;
 import co.edu.udea.securecheck.domain.usecase.security.TokenUseCase;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.*;
 import co.edu.udea.securecheck.domain.spi.security.AuthenticationSecurityPort;
 import co.edu.udea.securecheck.domain.spi.security.TokenSecurityPort;
 import co.edu.udea.securecheck.domain.utils.annotation.Generated;
@@ -58,6 +58,21 @@ public class BeanConfiguration {
                 userPersistencePort,
                 defaultQuestionPersistencePort,
                 customQuestionPersistencePort
+        );
+    }
+
+    @Bean
+    public AuditServicePort auditServicePort(
+            AuditPersistencePort auditPersistencePort,
+            CompanyPersistencePort companyPersistencePort,
+            ControlPersistencePort controlPersistencePort,
+            AnswerPersistencePort answerPersistencePort
+    ) {
+        return new AuditUseCase(
+                auditPersistencePort,
+                companyPersistencePort,
+                controlPersistencePort,
+                answerPersistencePort
         );
     }
 

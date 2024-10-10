@@ -43,6 +43,9 @@ public class CompanyEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "company")
     private Set<CustomQuestionEntity> questions;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company")
+    private Set<AuditEntity> audits;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private UserEntity user;

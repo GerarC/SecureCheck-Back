@@ -1,7 +1,7 @@
 package co.edu.udea.securecheck.domain.api.usecase;
 
 import co.edu.udea.securecheck.domain.model.Domain;
-import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.DomainPersistencePort;
 import co.edu.udea.securecheck.domain.usecase.DomainUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

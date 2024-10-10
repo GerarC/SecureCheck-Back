@@ -5,10 +5,10 @@ import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Question;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
-import co.edu.udea.securecheck.domain.spi.CustomQuestionPersistencePort;
-import co.edu.udea.securecheck.domain.spi.DefaultQuestionPersistencePort;
-import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CompanyPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CustomQuestionPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.DefaultQuestionPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.StreamUtils;
 import co.edu.udea.securecheck.domain.utils.filters.QuestionFilter;
 

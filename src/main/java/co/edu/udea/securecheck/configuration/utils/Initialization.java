@@ -3,6 +3,7 @@ package co.edu.udea.securecheck.configuration.utils;
 
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.*;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.*;
+import co.edu.udea.securecheck.domain.api.AuditServicePort;
 import co.edu.udea.securecheck.domain.utils.annotation.Generated;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class Initialization {
     private final DefaultQuestionRepository defaultQuestionRepository;
     private final CustomQuestionRepository customQuestionRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuditServicePort auditServicePort;
 
     private static final String DEFAULT_QUESTION_TEMPLATE = "How is the control for %s being enforced?";
 
@@ -114,7 +116,7 @@ public class Initialization {
                             .user(users.get(1))  // John Doe user
                             .build()
             );
-            List<CompanyEntity> companyEntities = companyRepository.saveAll(companies);
+            List<CompanyEntity> savedCompanies = companyRepository.saveAll(companies);
 
             DomainEntity domain = DomainEntity.builder()
                     .index(5)
@@ -742,7 +744,7 @@ public class Initialization {
                     ControlEntity.builder()
                             .index(34)
                             .name("Protection of Information Systems During Audits")
-                            .description("Audit tests and other assurance activities involving information system evaluation must be planned and agreed upon between the evaluator and management.")
+                            .description("AuditEntity tests and other assurance activities involving information system evaluation must be planned and agreed upon between the evaluator and management.")
                             .domain(techDomain)
                             .build()
             );
@@ -757,7 +759,7 @@ public class Initialization {
             defaultQuestionRepository.saveAll(defaultEightQuestions);
 
             List<DefaultQuestionEntity> defaultQuestions = defaultQuestionRepository.findAll();
-            companyEntities.forEach(company -> {
+            savedCompanies.forEach(company -> {
                 List<CustomQuestionEntity> customQuestions = defaultQuestions.stream()
                         .map(question ->
                                 CustomQuestionEntity.builder()
@@ -769,6 +771,7 @@ public class Initialization {
                 customQuestionRepository.saveAll(customQuestions);
             });
 
+            savedCompanies.forEach(company -> auditServicePort.createAudit(company.getId()));
         };
     }
 }

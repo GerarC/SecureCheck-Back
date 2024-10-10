@@ -3,7 +3,7 @@ package co.edu.udea.securecheck.adapter.driven.jpa.adapters;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.DefaultQuestionEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.DefaultQuestionRepository;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.spi.DefaultQuestionPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.DefaultQuestionPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

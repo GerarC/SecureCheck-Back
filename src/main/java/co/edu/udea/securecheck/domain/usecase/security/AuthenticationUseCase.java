@@ -6,7 +6,7 @@ import co.edu.udea.securecheck.domain.model.TokenHolder;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.spi.security.AuthenticationSecurityPort;
 import co.edu.udea.securecheck.domain.spi.security.TokenSecurityPort;
-import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.AuthenticationInfo;
 import co.edu.udea.securecheck.domain.utils.Constants;
 
@@ -24,14 +24,21 @@ public class AuthenticationUseCase implements AuthenticationServicePort {
     @Override
     public TokenHolder authenticate(String email, String password) {
         User user = userPersistencePort.getUserByEmail(email);
-        if (user == null) throw new EntityNotFoundException(String.format(Constants.USER_WITH_EMAIL_NOT_FOUND_MESSAGE, email));
+        if (user == null) throw new EntityNotFoundException(
+                String.format(Constants.USER_WITH_EMAIL_NOT_FOUND_MESSAGE, email)
+        );
 
-        AuthenticationInfo info = AuthenticationInfo.builder()
-                .id(user.getId())
-                .password(password)
-                .build();
+        AuthenticationInfo info = buildInfo(user, password);
+
         authenticationSecurityPort.authenticate(info);
 
         return tokenSecurityPort.createToken(user);
+    }
+
+    private AuthenticationInfo buildInfo(User user, String password) {
+        return AuthenticationInfo.builder()
+                .id(user.getId())
+                .password(password)
+                .build();
     }
 }

@@ -8,7 +8,7 @@ import co.edu.udea.securecheck.domain.exceptions.UnderageUserException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Role;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.Constants;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
 import co.edu.udea.securecheck.domain.utils.enums.RoleName;

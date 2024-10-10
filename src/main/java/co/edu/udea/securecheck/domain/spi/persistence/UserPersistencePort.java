@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.spi;
+package co.edu.udea.securecheck.domain.spi.persistence;
 
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.User;

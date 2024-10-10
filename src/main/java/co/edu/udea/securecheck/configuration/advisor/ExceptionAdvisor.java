@@ -51,6 +51,7 @@ public class ExceptionAdvisor {
     }
 
     @ExceptionHandler(value = {
+            CompanyAlreadyHasActiveAuditException.class,
             IdentityDocumentAlreadyExistsException.class,
             EmailAlreadyExistsException.class,
             UnderageUserException.class,

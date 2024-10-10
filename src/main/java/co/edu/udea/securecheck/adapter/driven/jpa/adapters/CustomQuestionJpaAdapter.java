@@ -4,7 +4,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.CustomQuestionEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CustomQuestionEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CustomQuestionRepository;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.spi.CustomQuestionPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CustomQuestionPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

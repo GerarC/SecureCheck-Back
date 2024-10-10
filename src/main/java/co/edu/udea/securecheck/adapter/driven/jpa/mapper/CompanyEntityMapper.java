@@ -17,6 +17,7 @@ import java.util.List;
 public interface CompanyEntityMapper {
     @Mapping(target = "user", ignore = true)
     @Mapping(target = "questions", ignore = true)
+    @Mapping(target = "audits", ignore = true)
     Company toDomain(CompanyEntity companyEntity);
     List<Company> toDomains(List<CompanyEntity> companyEntities);
     CompanyEntity toEntity(Company company);

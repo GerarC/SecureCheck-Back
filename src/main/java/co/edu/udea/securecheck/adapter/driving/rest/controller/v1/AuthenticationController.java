@@ -46,6 +46,18 @@ public class AuthenticationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(authenticationService.registerAuditor(userRequest));
     }
 
+    @Operation(summary = RestConstants.SWAGGER_LOGIN_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = RestConstants.CODE_ACCEPTED,
+                    description = RestConstants.SWAGGER_LOGIN_SUCCESSFUL,
+                    content = @Content(schema = @Schema(implementation = AuthenticationResponse.class))),
+            @ApiResponse(responseCode = RestConstants.CODE_UNAUTHORIZED,
+                    description = RestConstants.SWAGGER_LOGIN_BAD_CREDENTIALS,
+                    content = @Content(schema = @Schema(implementation = ExceptionResponse.class))),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST,
+                    description = RestConstants.SWAGGER_VALIDATIONS_FAILED,
+                    content = @Content(schema = @Schema(implementation = ValidationExceptionResponse.class))),
+    })
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request){
         return ResponseEntity.accepted().body(authenticationService.login(request));

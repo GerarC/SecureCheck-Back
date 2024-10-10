@@ -21,6 +21,7 @@ import java.util.List;
 public interface ControlEntityMapper {
     @Mapping(target = "controls", ignore = true)
     Domain domain(DomainEntity entity);
+    @Mapping(target = "questions", ignore = true)
     Control toDomain(ControlEntity domainEntity);
     List<Control> toDomains(List<ControlEntity> domainEntities);
     ControlEntity toEntity(Control domain);

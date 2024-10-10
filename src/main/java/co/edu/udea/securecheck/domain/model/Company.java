@@ -16,6 +16,7 @@ public class Company {
     private String contactPhone;
     private LocalDateTime createdAt;
     private List<Question> questions;
+    private List<Audit> audits;
     private User user;
 
     private Company(Builder builder) {
@@ -29,6 +30,7 @@ public class Company {
         this.createdAt = builder.createdAt;
         this.questions = builder.questions;
         this.user = builder.user;
+        this.audits = builder.audits;
     }
 
     public Company() {
@@ -114,6 +116,14 @@ public class Company {
         this.questions = questions;
     }
 
+    public List<Audit> getAudits() {
+        return audits;
+    }
+
+    public void setAudits(List<Audit> audits) {
+        this.audits = audits;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -128,6 +138,7 @@ public class Company {
         private String contactPhone;
         private LocalDateTime createdAt;
         private List<Question> questions;
+        private List<Audit> audits;
         private User user;
 
         public Builder() {
@@ -176,6 +187,11 @@ public class Company {
 
         public Builder questions(List<Question> questions) {
             this.questions = questions;
+            return this;
+        }
+
+        public Builder audits(List<Audit> audits){
+            this.audits = audits;
             return this;
         }
 

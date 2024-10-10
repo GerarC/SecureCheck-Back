@@ -5,9 +5,9 @@ import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
-import co.edu.udea.securecheck.domain.spi.ControlPersistencePort;
-import co.edu.udea.securecheck.domain.spi.CustomQuestionPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CompanyPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.ControlPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CustomQuestionPersistencePort;
 
 public class QuestionUseCase implements QuestionServicePort {
 

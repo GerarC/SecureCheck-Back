@@ -11,12 +11,17 @@ public class RestConstants {
     public static final String CODE_BAD_REQUEST = "400";
     public static final String CODE_NOT_FOUND= "404";
     public static final String CODE_CONFLICT = "409";
+    public static final String CODE_UNAUTHORIZED = "401";
 
     public static final String SWAGGER_VALIDATIONS_FAILED = "Validations have failed";
 
     public static final String SWAGGER_REGISTER_AUDITOR_SUMMARY = "Register a new auditor";
     public static final String SWAGGER_REGISTER_AUDITOR_SUCCESSFUL = "Auditor has been registered successfully";
     public static final String SWAGGER_REGISTER_AUDITOR_CONFLICT = "There's a conflict with given information, i.e., email or document is already registered, or User is under aged";
+    public static final String SWAGGER_LOGIN_SUMMARY = "Search in data base if user exists and then return a token";
+    public static final String SWAGGER_LOGIN_SUCCESSFUL = "User has been logged in successfully";
+    public static final String SWAGGER_LOGIN_BAD_CREDENTIALS = "Bad credentials";
+
 
     public static final String SWAGGER_GET_USER_COMPANIES_SUMMARY = "Get the user registered companies";
     public static final String SWAGGER_GET_USER_COMPANIES_SUCCESSFUL = "Companies created by the user";
@@ -42,8 +47,13 @@ public class RestConstants {
     public static final String SWAGGER_CREATE_QUESTION_SUMMARY = "create a new custom question";
     public static final String SWAGGER_CREATE_QUESTION_SUCCESSFUL = "question is created";
 
+    public static final String SWAGGER_CREATE_AUDIT_SUMMARY = "create a new audit";
+    public static final String SWAGGER_CREATE_AUDIT_SUCCESSFUL = "audit has been created";
+    public static final String SWAGGER_CREATE_AUDIT_COMPANY_NOT_FOUND = "required company hasn't been found";
+    public static final String SWAGGER_CREATE_AUDIT_COMPANY_ALREADY_HAS_AN_ACTIVE_ONE = "company already has an active audit";
 
-    // Something Not found messages
+
+    // Some Didn't find messages
     public static final String SWAGGER_CONTROL_NOT_FOUND = "Control not found";
     public static final String SWAGGER_COMPANY_NOT_FOUND = "Company not found";
     public static final String SWAGGER_DOMAIN_NOT_FOUND = "Domain not found";

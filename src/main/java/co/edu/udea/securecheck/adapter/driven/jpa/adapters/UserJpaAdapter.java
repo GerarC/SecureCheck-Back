@@ -14,7 +14,7 @@ import co.edu.udea.securecheck.domain.exceptions.TypeAttributeDoesntExistsExcept
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.User;
-import co.edu.udea.securecheck.domain.spi.UserPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.UserPersistencePort;
 import co.edu.udea.securecheck.domain.utils.SortQuery;
 import co.edu.udea.securecheck.domain.utils.filters.CompanyFilter;
 import jakarta.transaction.Transactional;

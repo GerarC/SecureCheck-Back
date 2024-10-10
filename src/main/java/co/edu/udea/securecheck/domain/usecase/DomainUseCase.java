@@ -4,7 +4,7 @@ import co.edu.udea.securecheck.domain.api.DomainServicePort;
 import co.edu.udea.securecheck.domain.exceptions.EntityNotFoundException;
 import co.edu.udea.securecheck.domain.model.Control;
 import co.edu.udea.securecheck.domain.model.Domain;
-import co.edu.udea.securecheck.domain.spi.DomainPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.DomainPersistencePort;
 
 import java.util.List;
 

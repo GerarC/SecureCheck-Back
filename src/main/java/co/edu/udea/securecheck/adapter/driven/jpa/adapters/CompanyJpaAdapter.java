@@ -9,7 +9,7 @@ import co.edu.udea.securecheck.adapter.driven.jpa.repository.CustomQuestionRepos
 import co.edu.udea.securecheck.adapter.driven.jpa.specification.QuestionSpecification;
 import co.edu.udea.securecheck.domain.model.Company;
 import co.edu.udea.securecheck.domain.model.Question;
-import co.edu.udea.securecheck.domain.spi.CompanyPersistencePort;
+import co.edu.udea.securecheck.domain.spi.persistence.CompanyPersistencePort;
 import co.edu.udea.securecheck.domain.utils.filters.QuestionFilter;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
