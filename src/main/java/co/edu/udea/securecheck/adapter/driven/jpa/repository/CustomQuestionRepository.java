@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CustomQuestionRepository extends JpaRepository<CustomQuestionEntity, Long> {
-    List<CustomQuestionEntity> findAllByControlId(Long controlId);
     List<CustomQuestionEntity> findAll(Specification<CustomQuestionEntity> spec);
+    List<CustomQuestionEntity> findAllByCompanyId(String companyId);
 }

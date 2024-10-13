@@ -8,4 +8,5 @@ import co.edu.udea.securecheck.adapter.driving.rest.dto.response.RegisterRespons
 public interface AuthenticationService {
     RegisterResponse registerAuditor(UserRequest userRequest);
     AuthenticationResponse login(AuthenticationRequest authenticationRequest);
+    AuthenticationResponse validateToken(String token);
 }

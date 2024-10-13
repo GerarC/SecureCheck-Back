@@ -52,7 +52,10 @@ public class ExceptionAdvisor {
 
     @ExceptionHandler(value = {
             CompanyAlreadyHasActiveAuditException.class,
+            CompanyHasNotActiveAuditException.class,
             IdentityDocumentAlreadyExistsException.class,
+            InvalidTokenException.class,
+            ExpiredTokenException.class,
             EmailAlreadyExistsException.class,
             UnderageUserException.class,
     })

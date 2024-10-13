@@ -62,4 +62,10 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request){
         return ResponseEntity.accepted().body(authenticationService.login(request));
     }
+
+    // TODO: create swagger documentation
+    @PostMapping("/token")
+    public ResponseEntity<AuthenticationResponse> validateToken(String token){
+        return ResponseEntity.accepted().body(authenticationService.validateToken(token));
+    }
 }

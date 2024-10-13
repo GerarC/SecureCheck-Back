@@ -9,5 +9,4 @@ public interface CustomQuestionPersistencePort {
     Question save(Question question);
     List<Question> saveAll(List<Question> questions);
     Question getQuestion(Long id);
-    List<Question> getQuestionByControl(Long controlId);
 }

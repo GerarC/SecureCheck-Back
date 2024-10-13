@@ -89,6 +89,23 @@ public class BeanConfiguration {
         );
     }
 
+    @Bean
+    public AuditFormUseCase auditFormUseCase(
+            AuditPersistencePort auditPersistencePort,
+            CompanyPersistencePort companyPersistencePort,
+            DomainPersistencePort domainPersistencePort,
+            ControlPersistencePort controlPersistencePort,
+            AnswerPersistencePort answerPersistencePort
+    ) {
+        return new AuditFormUseCase(
+                auditPersistencePort,
+                companyPersistencePort,
+                domainPersistencePort,
+                controlPersistencePort,
+                answerPersistencePort
+        );
+    }
+
     // Security
     @Bean
     UserDetailsService userDetailsService(UserServicePort userServicePort) {

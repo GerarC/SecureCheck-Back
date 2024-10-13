@@ -11,6 +11,7 @@ import co.edu.udea.securecheck.domain.api.security.AuthenticationServicePort;
 import co.edu.udea.securecheck.domain.model.TokenHolder;
 import co.edu.udea.securecheck.domain.model.User;
 import co.edu.udea.securecheck.domain.utils.Constants;
+import co.edu.udea.securecheck.domain.utils.authentication.AuthenticatedUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,12 +40,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
-        TokenHolder holder = authenticationServicePort.authenticate(
+        AuthenticatedUser user = authenticationServicePort.authenticate(
                 authenticationRequest.getEmail(),
                 authenticationRequest.getPassword()
         );
         return AuthenticationResponse.builder()
-                .token(holder.getToken())
+                .token(user.getToken())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .build();
+    }
+
+    @Override
+    public AuthenticationResponse validateToken(String token) {
+        AuthenticatedUser user = authenticationServicePort.validateToken(
+                TokenHolder.builder().token(token).build()
+        );
+        return AuthenticationResponse.builder()
+                .token(user.getToken())
+                .email(user.getEmail())
+                .role(user.getRole())
                 .build();
     }
 }

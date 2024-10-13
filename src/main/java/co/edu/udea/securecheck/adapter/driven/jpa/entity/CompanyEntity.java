@@ -25,9 +25,6 @@ public class CompanyEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "nick", nullable = false)
-    private String nick;
-
     @Column(name = "address", nullable = false)
     private String address;
 

@@ -19,9 +19,6 @@ public class CompanyRequest {
     @NotNull(message = Constants.EMPTY_NAME_FIELD_MESSAGE)
     private String name;
 
-    @NotNull(message = Constants.EMPTY_NICK_FIELD_MESSAGE)
-    private String nick;
-
     @NotNull(message = Constants.EMPTY_ADDRESS_FIELD_MESSAGE)
     private String address;
 

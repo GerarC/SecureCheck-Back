@@ -1,4 +1,4 @@
-package co.edu.udea.securecheck.domain.utils;
+package co.edu.udea.securecheck.domain.utils.authentication;
 
 public class AuthenticationInfo {
     private String id;

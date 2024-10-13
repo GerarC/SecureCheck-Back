@@ -14,7 +14,6 @@ public class CompanyResponse {
     private String id;
     private String nit;
     private String name;
-    private String nick;
     private String address;
     private String contactEmail;
     private String contactPhone;

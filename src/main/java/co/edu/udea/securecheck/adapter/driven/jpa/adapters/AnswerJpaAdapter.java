@@ -25,6 +25,8 @@ public class AnswerJpaAdapter implements AnswerPersistencePort {
 
     @Override
     public List<Answer> getByAuditId(Long auditId) {
-        return List.of();
+        return answerEntityMapper.toDomains(
+                answerRepository.findAllByAuditId(auditId)
+        );
     }
 }

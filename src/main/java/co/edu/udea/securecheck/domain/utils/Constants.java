@@ -55,6 +55,9 @@ public class Constants {
     public static final String IDENTITY_DOCUMENT_ALREADY_REGISTERED_MESSAGE = "A user with document with number '%s' is already registered";
     public static final String UNDERAGE_USER_MESSAGE = "User born '%tF' is underage";
     public static final String COMPANY_ALREADY_HAS_ACTIVE_AUDIT_MESSAGE = "Company with id '%s' already has an active audit";
+    public static final String COMPANY_HAS_NOT_ACTIVE_AUDIT_MESSAGE = "Company %s has not active audit";
+    public static final String INVALID_TOKEN_MESSAGE = "Given token is invalid";
+    public static final String EXPIRED_TOKEN_MESSAGE = "Given token has expired";
 
     public static final String ENTITY_NOT_FOUND_MESSAGE = "Entity of type '%s' with id '%s' not found";
     public static final String TYPE_ATTRIBUTE_DOESNT_EXISTS_MESSAGE = "Attribute '%s' doesn't exists in '%s' type";

@@ -25,7 +25,6 @@ public interface CustomQuestionEntityMapper {
                 .id(companyEntity.getId())
                 .nit(companyEntity.getNit())
                 .name(companyEntity.getName())
-                .nick(companyEntity.getNick())
                 .address(companyEntity.getAddress())
                 .contactEmail(companyEntity.getContactEmail())
                 .contactPhone(companyEntity.getContactPhone())

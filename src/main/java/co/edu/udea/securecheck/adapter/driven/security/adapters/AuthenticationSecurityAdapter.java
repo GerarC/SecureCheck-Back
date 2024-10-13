@@ -1,7 +1,7 @@
 package co.edu.udea.securecheck.adapter.driven.security.adapters;
 
 import co.edu.udea.securecheck.domain.spi.security.AuthenticationSecurityPort;
-import co.edu.udea.securecheck.domain.utils.AuthenticationInfo;
+import co.edu.udea.securecheck.domain.utils.authentication.AuthenticationInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

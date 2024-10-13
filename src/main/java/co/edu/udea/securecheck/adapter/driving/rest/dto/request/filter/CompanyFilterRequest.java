@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class CompanyFilterRequest {
     private String nit;
     private String name;
-    private String nick;
     private LocalDateTime createdAfter;
     private LocalDateTime createdBefore;
 }
