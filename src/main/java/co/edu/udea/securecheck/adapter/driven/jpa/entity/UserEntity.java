@@ -44,6 +44,6 @@ public class UserEntity {
     @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
     private RoleEntity role;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CompanyEntity> companies;
 }

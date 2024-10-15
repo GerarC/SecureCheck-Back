@@ -37,7 +37,7 @@ public class AuthenticationUseCase implements AuthenticationServicePort {
 
         TokenHolder holder = tokenSecurityPort.createToken(user);
         return AuthenticatedUser.builder()
-                .email(email)
+                .id(user.getId())
                 .role(user.getRole().getName())
                 .token(holder.getToken())
                 .build();
@@ -53,7 +53,7 @@ public class AuthenticationUseCase implements AuthenticationServicePort {
             return AuthenticatedUser.builder()
                     .token(tokenHolder.getToken())
                     .role(user.getRole().getName())
-                    .email(user.getEmail())
+                    .id(username)
                     .build();
         } catch (Exception e) {
             throw new InvalidTokenException();

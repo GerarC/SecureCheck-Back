@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<CompanyEntity, String> {
     List<CompanyEntity> findAll(Specification<CompanyEntity> specification, Sort sort);
+    boolean existsByNitAndUserId(String nit, String userId);
 }

@@ -34,8 +34,6 @@ public class CompanyUseCase implements CompanyServicePort {
     @Override
     public Company createCompany(Company company) {
         // Ensure that in that user doesn't exist the same nit nor nick
-        if (!userPersistencePort.existsById(company.getUser().getId()))
-            throw new EntityNotFoundException(User.class.getSimpleName(), company.getUser().getId());
         company.setCreatedAt(LocalDateTime.now());
         Company savedCompany = companyPersistencePort.createCompany(company);
 
@@ -77,4 +75,10 @@ public class CompanyUseCase implements CompanyServicePort {
             return question;
         });
     }
+
+    private void canCreateCompany(Company company) {
+        if (!userPersistencePort.existsById(company.getUser().getId()))
+            throw new EntityNotFoundException(User.class.getSimpleName(), company.getUser().getId());
+    }
+
 }

@@ -6,12 +6,12 @@ import co.edu.udea.securecheck.domain.utils.enums.RoleName;
 public class AuthenticatedUser {
     private String token;
     private RoleName role;
-    private String email;
+    private String id;
 
     private AuthenticatedUser(Builder builder) {
         this.token = builder.token;
         this.role = builder.role;
-        this.email = builder.email;
+        this.id = builder.id;
     }
 
     public String getToken() {
@@ -30,12 +30,12 @@ public class AuthenticatedUser {
         this.role = role;
     }
 
-    public String getEmail() {
-        return email;
+    public String getId() {
+        return id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public static Builder builder() {
@@ -45,7 +45,7 @@ public class AuthenticatedUser {
     public static class Builder {
         private String token;
         private RoleName role;
-        private String email;
+        private String id;
 
         public Builder token(String token) {
             this.token = token;
@@ -57,8 +57,8 @@ public class AuthenticatedUser {
             return this;
         }
 
-        public Builder email(String email) {
-            this.email = email;
+        public Builder id(String id) {
+            this.id = id;
             return this;
         }
 

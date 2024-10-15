@@ -37,10 +37,10 @@ public class CompanyEntity {
     @Column(name = "register_date", nullable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<CustomQuestionEntity> questions;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<AuditEntity> audits;
 
     @ManyToOne

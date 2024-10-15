@@ -17,7 +17,6 @@ public class Constants {
     // Empty messages
     public static final String EMPTY_NAME_FIELD_MESSAGE = "'name' field cannot be empty";
     public static final String EMPTY_NIT_FIELD_MESSAGE = "'nit' field cannot be empty";
-    public static final String EMPTY_NICK_FIELD_MESSAGE = "'nick' field cannot be empty";
     public static final String EMPTY_LASTNAME_FIELD_MESSAGE = "'lastname' field cannot be empty";
     public static final String EMPTY_IDENTITY_DOCUMENT_FIELD_MESSAGE = "'identityDocument' field cannot be empty";
     public static final String EMPTY_BIRTHDATE_FIELD_MESSAGE = "'birthdate' field cannot be empty";
@@ -58,6 +57,7 @@ public class Constants {
     public static final String COMPANY_HAS_NOT_ACTIVE_AUDIT_MESSAGE = "Company %s has not active audit";
     public static final String INVALID_TOKEN_MESSAGE = "Given token is invalid";
     public static final String EXPIRED_TOKEN_MESSAGE = "Given token has expired";
+    public static final String REPEATED_NIT_COMPANY_EXCEPTION = "This user already has a company with nit '%s'";
 
     public static final String ENTITY_NOT_FOUND_MESSAGE = "Entity of type '%s' with id '%s' not found";
     public static final String TYPE_ATTRIBUTE_DOESNT_EXISTS_MESSAGE = "Attribute '%s' doesn't exists in '%s' type";

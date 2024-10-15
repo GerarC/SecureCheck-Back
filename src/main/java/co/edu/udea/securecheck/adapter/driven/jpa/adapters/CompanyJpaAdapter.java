@@ -4,6 +4,8 @@ import co.edu.udea.securecheck.adapter.driven.jpa.entity.CompanyEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.entity.CustomQuestionEntity;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CompanyEntityMapper;
 import co.edu.udea.securecheck.adapter.driven.jpa.mapper.CustomQuestionEntityMapper;
+import co.edu.udea.securecheck.adapter.driven.jpa.repository.AnswerRepository;
+import co.edu.udea.securecheck.adapter.driven.jpa.repository.AuditRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CompanyRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.repository.CustomQuestionRepository;
 import co.edu.udea.securecheck.adapter.driven.jpa.specification.QuestionSpecification;
@@ -25,6 +27,8 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
     private final CustomQuestionRepository customQuestionRepository;
     private final CompanyEntityMapper companyEntityMapper;
     private final CustomQuestionEntityMapper customQuestionEntityMapper;
+    private final AuditRepository auditRepository;
+    private final AnswerRepository answerRepository;
 
     @Override
     @Transactional
@@ -48,9 +52,19 @@ public class CompanyJpaAdapter implements CompanyPersistencePort {
     }
 
     @Override
+    public boolean existsByNitAndUser(String nit, String userId) {
+        return companyRepository.existsByNitAndUserId(nit, userId);
+    }
+
+    @Override
     @Transactional
     public void deleteCompany(String id) {
-        companyRepository.deleteById(id);
+        companyRepository.findById(id).ifPresent(company -> {
+            company.getAudits().forEach(audit -> answerRepository.deleteAll(audit.getAnswers()));
+            customQuestionRepository.deleteAll(company.getQuestions());
+            auditRepository.deleteAll(company.getAudits());
+            companyRepository.deleteById(id);
+        });
     }
 
     @Override

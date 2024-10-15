@@ -10,6 +10,7 @@ public interface CompanyPersistencePort {
     Company createCompany(Company company);
     Company getCompany(String id);
     boolean existsById(String id);
+    boolean existsByNitAndUser(String nit, String userId);
     void deleteCompany(String id);
     List<Question> getCompanyQuestions(QuestionFilter filter);
 }

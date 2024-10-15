@@ -34,7 +34,7 @@ public class AuditEntity {
     @JoinColumn(name = "company", nullable = false)
     private CompanyEntity company;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "audit")
+    @OneToMany(mappedBy = "audit", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<AnswerEntity> answers;
 
     @Column(name = "state", nullable = false)
